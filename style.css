@@ -13,22 +13,25 @@ ul {
     list-style: none;
 }
 
-.stations-input-list {
+.station-input-container {
     position: relative;
+    width: 15rem;
 }
 
-.stations-input-list input {
-    position: absolute;
+.station-input-container > input {
+    position: relative;
+    width: 100%;
 }
 
 .stations-list {
     position: absolute;
     max-height: 20rem;
-    width: inherit;
+    width: 15rem;
     margin: 0;
     padding: 0;
     overflow-y: scroll;
     border: 1px solid black;
+    z-index: 100;
 }
 
 .stations-list li {
@@ -40,6 +43,6 @@ ul {
     border-bottom: none;
 }
 
-.hide {
+.hidden {
     display: none;
 }
