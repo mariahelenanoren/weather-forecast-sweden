@@ -2,12 +2,15 @@ window.addEventListener("load", main);
 
 function main() {
     getApi();
-    addCitiesToDatalist();
     setEventListeners();
-    getCityList();
+    addCitiesToDatalist();
 }
 
 function setEventListeners() {
+    const stationInput = document.querySelector("#station")
+
+    stationInput.addEventListener("focus", displayStationsList)
+    stationInput.addEventListener("blur", displayStationsList)
 }
 
 async function getApi() {
@@ -20,13 +23,13 @@ async function getApi() {
     }
 }
 
-async function getCityList() {
-    console.log("hello")
+async function getStationsList() {
     try {
         const result = await fetch("https://opendata-download-metobs.smhi.se/api/version/1.0/parameter/1.json")
         const data = await result.json();
-        console.log(data)
+        return data;
     } catch(error) {
+        console.error(error)
     }
 }
 
@@ -35,11 +38,24 @@ function getCountryInput() {
 }
 
 async function addCitiesToDatalist() {
-    const weatherAPI = await getApi();
+    const parameterData = await getStationsList();
 
-    if (weatherAPI) {
-        console.log(weatherAPI)
+    if (parameterData) {
+        const stations = parameterData.station
+
+        for (station in stations) {
+            const listContainer = document.querySelector("#stations-list")
+            const li = document.createElement("li")
+            li.innerHTML = stations[station].name
+            listContainer.append(li)
+        }
     }
+}
+
+function displayStationsList() {
+    const stationsList = document.querySelector("#stations-list")
+
+    stationsList.classList.toggle("hide")
 }
 
 
