@@ -24,14 +24,20 @@ ul {
 .stations-list {
     position: absolute;
     max-height: 20rem;
-    width: fit-content;
+    width: inherit;
     margin: 0;
+    padding: 0;
     overflow-y: scroll;
     border: 1px solid black;
 }
 
-.stations-list {
+.stations-list li {
+    padding: 0.5rem;
+    border-bottom: 1px solid black;
+}
 
+.stations-list li:last-child {
+    border-bottom: none;
 }
 
 .hide {

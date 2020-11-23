@@ -3,14 +3,13 @@ window.addEventListener("load", main);
 function main() {
     getApi();
     setEventListeners();
-    addCitiesToDatalist();
 }
 
 function setEventListeners() {
     const stationInput = document.querySelector("#station")
 
-    stationInput.addEventListener("focus", displayStationsList)
-    stationInput.addEventListener("blur", displayStationsList)
+    stationInput.addEventListener("keyup", () => displayStationsList(stationInput))
+    //stationInput.addEventListener("blur", displayStationsList)
 }
 
 async function getApi() {
@@ -37,25 +36,45 @@ function getCountryInput() {
     return "Sweden";
 }
 
-async function addCitiesToDatalist() {
-    const parameterData = await getStationsList();
+async function addStationsToDataList() {
+    const data = await getStationsList();
 
-    if (parameterData) {
-        const stations = parameterData.station
+    if (data) {
+        const stationsList = []
+        const stations = data.station
 
         for (station in stations) {
-            const listContainer = document.querySelector("#stations-list")
-            const li = document.createElement("li")
-            li.innerHTML = stations[station].name
-            listContainer.append(li)
+            stationsList.push(stations[station].name)
         }
+    return stationsList;
     }
 }
 
-function displayStationsList() {
-    const stationsList = document.querySelector("#stations-list")
+async function displayStationsList(input) {
+    const stationsList = await addStationsToDataList();
+    const inputValue = input.value
 
-    stationsList.classList.toggle("hide")
+    showStationsInDataList(inputValue, stationsList)
+}
+
+function showStationsInDataList(inputValue, stationsList) {
+    const dataList = document.querySelector("#stations-list")
+    console.log(inputValue)
+    console.log(inputValue.length)
+    emptyDataList(dataList);
+
+   for (station in stationsList) {
+       if (inputValue.toLowerCase() === stationsList[station].slice(0, inputValue.length).toLowerCase()) {
+            console.log(stationsList[station])
+            const li = document.createElement("li")
+            li.innerHTML = stationsList[station]
+            dataList.append(li)
+       }
+   }
+}
+
+function emptyDataList(dataList) {
+    dataList.innerHTML = "";
 }
 
 
