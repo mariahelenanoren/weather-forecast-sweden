@@ -1,4 +1,5 @@
-let chosenStationKey;
+const chosenStation = {
+}
 
 window.addEventListener("load", main);
 
@@ -11,9 +12,13 @@ function main() {
 
 function addEventListeners() {
     const stationPicker = document.querySelector("#station-btn")
-    stationPicker.addEventListener("click", (event) => {
-        getLatestHourData();
-        getForecast();
+
+    stationPicker.addEventListener("click", function(event) {
         event.preventDefault();
-    })
+        setStation();
+        getLatestHourData();
+        setTimeout( function() {
+            getForecast();
+        }, 100)
+    });
 }

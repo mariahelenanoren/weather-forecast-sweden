@@ -56,7 +56,7 @@ function showStationsInDataList(inputValue, stationsList) {
             const li = document.createElement("li")
             li.innerHTML = stationsList[station]
             dataList.append(li)
-            li.addEventListener("click", () => setStation(li))
+            li.addEventListener("click", () => presentStationInInput(li))
        }
    }
 }
@@ -65,18 +65,26 @@ function emptyDataList(dataList) {
     dataList.innerHTML = "";
 }
 
-async function setStation(li) {
+function presentStationInInput(li) {
+    const stationInput = document.querySelector("#station")
+    stationInput.value = li.innerHTML;
+}
+
+async function setStation() {
     const data = await getStationsList();
     const stations = data.station
     const stationInput = document.querySelector("#station")
-    stationInput.value = li.innerHTML;
-    const chosenStation = li.innerHTML;
+    const stationName = stationInput.value
+
 
     for (station in stations) {
-        if (chosenStation === stations[station].name) {
-            chosenStationKey = stations[station].key
+        if (stationName === stations[station].name) {
+            chosenStation.name = stations[station].name
+            chosenStation.lon = stations[station].longitude
+            chosenStation.lat = stations[station].latitude
         }
     }
+
 }
 
 function toggleDataList() {
