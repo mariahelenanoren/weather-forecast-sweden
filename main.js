@@ -5,8 +5,6 @@ window.addEventListener("load", main);
 
 function main() {
     stationPickerMain();
-    latestHourMain();
-    //weatherMain();
     addEventListeners();
 }
 
@@ -16,9 +14,9 @@ function addEventListeners() {
     stationPicker.addEventListener("click", function(event) {
         event.preventDefault();
         setStation();
-        getLatestHourData();
         setTimeout( function() {
-            getForecast();
+            showData();
+            showPreviousData();
         }, 100)
     });
 }

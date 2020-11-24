@@ -34,7 +34,9 @@ async function addStationsToDataList() {
         const stations = data.station
 
         for (station in stations) {
-            stationsList.push(stations[station].name)
+            if (stations[station].active === true) {
+                stationsList.push(stations[station].name)
+            }
         }
     return stationsList;
     }
@@ -80,6 +82,7 @@ async function setStation() {
     for (station in stations) {
         if (stationName === stations[station].name) {
             chosenStation.name = stations[station].name
+            chosenStation.key = stations[station].key
             chosenStation.lon = stations[station].longitude
             chosenStation.lat = stations[station].latitude
         }
