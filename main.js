@@ -1,4 +1,4 @@
-const chosenStation = {
+const chosenCity = {
 }
 
 window.addEventListener("load", main);
@@ -13,7 +13,7 @@ function addEventListeners() {
 
     stationPicker.addEventListener("click", function(event) {
         event.preventDefault();
-        setStation();
+        setCity();
         setTimeout( function() {
             showData();
             showPreviousData();

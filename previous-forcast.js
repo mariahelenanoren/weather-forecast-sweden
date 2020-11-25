@@ -1,7 +1,8 @@
 async function getPreviousForecast() {
-    const station = chosenStation.key
+    const lon = chosenCity.lon
+    const lat = chosenCity.lat
     try {
-        const result = await fetch("https://opendata-download-metobs.smhi.se/api/version/1.0/parameter/1/station/" + station + "/period/latest-months/data.json")
+        const result = await fetch("https://opendata-download-metanalys.smhi.se/api/category/mesan1g/version/2/geotype/point/lon/" + lon + "/lat/" + lat + "/data.json")
         const data = await result.json()
         return data;
     } catch(error) {
