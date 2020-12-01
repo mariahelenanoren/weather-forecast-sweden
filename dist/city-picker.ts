@@ -1,7 +1,8 @@
-function stationPickerMain() {
+function cityPickerMain() {
     setEventListeners();
     getSwedishCities();
 }
+
 
 function setEventListeners() {
     const cityInput = document.querySelector("#station")
@@ -42,7 +43,7 @@ async function addCitiesToDataList() {
     if (data) {
         const citiesList = []
 
-        for (city in data) {
+        for (let city in data) {
             citiesList.push(data[city].city)
         }
     return citiesList;
@@ -60,7 +61,7 @@ function showCitiesInDataList(inputValue, citiesList) {
     const dataList = document.querySelector("#stations-list")
     emptyDataList(dataList);
 
-   for (city in citiesList) {
+   for (let city in citiesList) {
        if ((inputValue.toLowerCase()) === (citiesList[city].slice(0, inputValue.length).toLowerCase())) {
             const li = document.createElement("li")
             li.innerHTML = citiesList[city]
@@ -75,23 +76,22 @@ function emptyDataList(dataList) {
 }
 
 function presentCityInInput(li) {
-    const cityInput = document.querySelector("#station")
+    const cityInput: HTMLInputElement = document.querySelector("#station")
     cityInput.value = li.innerHTML;
 }
 
 async function setCity() {
     const data = await getSwedishCities();
-    const cityInput = document.querySelector("#station")
+    const cityInput: HTMLInputElement = document.querySelector("#station")
     const cityName = cityInput.value
 
-    for (city in data) {
+    for (let city in data) {
         if (cityName === data[city].city) {
             chosenCity.name = data[city].city
             chosenCity.lon = data[city].lng
             chosenCity.lat = data[city].lat
         }
     }
-
 }
 
 function toggleDataList() {
