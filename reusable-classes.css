@@ -53,6 +53,10 @@
     background-color: #F2F2F2;
 }
 
+.light {
+    font-weight: 200;
+}
+
 .normal {
     font-weight: 300;
 }

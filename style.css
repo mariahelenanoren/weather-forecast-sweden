@@ -100,9 +100,60 @@ header a:hover {
     font-size: 2rem;
 }
 
-/* Main forecast stats */
+/* Main forecast data */
 
+.main-data {
+    padding: 1rem 0 1rem 0;
+    grid-template-columns: auto 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "temp sunup sundown visibility humidity"
+    "temp exp-temp wind air-pressure ."
+    ;
+}
 
+.main-data h2 {
+    font-size: 0.8rem;
+}
+
+.temp {
+    font-size: 5rem;
+    grid-area: temp;
+    margin: 0;
+    margin-right: 3rem;
+}
+
+.main-data div p {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.sunup {
+    grid-area: sunup;
+}
+
+.sundown {
+    grid-area: sundown;
+}
+
+.visibility {
+    grid-area: visibility;
+}
+
+.humidity {
+    grid-area: humidity;
+}
+
+.exp-temp {
+    grid-area: exp-temp;
+}
+
+.wind {
+    grid-area: wind;
+}
+
+.air-pressure {
+    grid-area: air-pressure;
+}
 
 /* Hourly forecast */
 .hourly-forecast {
