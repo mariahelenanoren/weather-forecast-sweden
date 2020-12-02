@@ -13,15 +13,29 @@
     <script src="./src/forecast.js"></script>
     <script src="./src/previous-forcast.js"></script>
 </head>
-<body class="flex column">
-    <header class="flex row">
-        <input list="stations" name="station" id="station" autocomplete="off">
-        <ul class="stations-list hidden" id="stations-list"></ul>
-        <button id="station-btn">Send</button>
-    </header>
-    <main class="flex column grow">
-    </main>
-    <footer class="flex row">
+<body>
+    <div class="black-overlay">
+        <div class="img-container">
+            <img class="background-img" src="./assets/winter.jpg">
+            <header class="">
+                <div class="search-field">
+                    <input list="stations" name="station" id="station" autocomplete="off">
+                    <ul class="stations-list hidden" id="stations-list"></ul>
+                    <button id="station-btn">Send</button>
+                </div>
+            </header>
+            <div class="main-forecast">
+
+            </div>
+        </div>
+        <div class="hourly-forecast">
+
+        </div>
+    </div>
+    <div class="weekly-forecast">
+
+    </div>
+    <footer class="">
 
     </footer>
 </body>

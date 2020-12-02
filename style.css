@@ -13,20 +13,49 @@ ul {
     list-style: none;
 }
 
-header {
-    height: 4rem;
-    background-color: aquamarine;
+body {
+    background-color: #2C3647;
 }
 
-main {
-    background-color: bisque;
+.black-overlay {
+    background-color: rgba(0, 0, 0, 0.35);
 }
+
+.img-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.background-img {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    opacity: 0.35;
+}
+
+/*--- HEADER ---*/
+
+header {
+    height: 4rem;
+}
+
+.search-field {
+    opacity: 100;
+    z-index: 100;
+}
+
+/*--- MAIN ---*/
+
+.main-forecast {
+    height: 30rem;
+}
+
+.hourly-forecast {
+    height: 10rem;
+}
+
+/*--- FOOTER ---*/
 
 footer {
     height: 4rem;
-    background-color: cadetblue;
-}
-
-.hidden {
-    display: none;
 }
