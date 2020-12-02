@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./reusable-classes.css">
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+
     <script src="./src/main.js"></script>
     <script src="./src/city-picker.js"></script>
     <script src="./src/forecast.js"></script>
@@ -17,19 +20,34 @@
     <div class="black-overlay">
         <div class="img-container">
             <img class="background-img" src="./assets/winter.jpg">
-            <header class="">
+
+            <header class="flex align-center justify-space-between">
+                <nav class="flex row align-center">
+                    <h1 class="semi-bold">Väder</h1>
+                    <a class="normal">Hem</a>
+                </nav>
                 <div class="search-field">
                     <input list="stations" name="station" id="station" autocomplete="off">
                     <ul class="stations-list hidden" id="stations-list"></ul>
                     <button id="station-btn">Send</button>
                 </div>
             </header>
-            <div class="main-forecast">
 
+            <div class="main-forecast">
+                <div class="city-header grid">
+                    <p class="today normal">Idag</p>
+                    <div class="city flex center">
+                        <p class="city-name semi-bold" id="name">Falkenberg</p>
+                        <span class="material-icons">
+                            brightness_7
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="hourly-forecast">
 
+        <div class="hourly-forecast flex column">
+    
         </div>
     </div>
     <div class="weekly-forecast">
