@@ -45,7 +45,7 @@
     align-items: flex-end;
 }
 
-.flex-grow {
+.grow {
     flex: 1;
 }
 

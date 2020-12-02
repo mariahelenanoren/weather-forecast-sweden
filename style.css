@@ -13,34 +13,18 @@ ul {
     list-style: none;
 }
 
-.station-input-container {
-    position: relative;
-    width: 15rem;
+header {
+    height: 4rem;
+    background-color: aquamarine;
 }
 
-.station-input-container > input {
-    position: relative;
-    width: 100%;
+main {
+    background-color: bisque;
 }
 
-.stations-list {
-    position: absolute;
-    max-height: 20rem;
-    width: 15rem;
-    margin: 0;
-    padding: 0;
-    overflow-y: scroll;
-    border: 1px solid black;
-    z-index: 100;
-}
-
-.stations-list li {
-    padding: 0.5rem;
-    border-bottom: 1px solid black;
-}
-
-.stations-list li:last-child {
-    border-bottom: none;
+footer {
+    height: 4rem;
+    background-color: cadetblue;
 }
 
 .hidden {

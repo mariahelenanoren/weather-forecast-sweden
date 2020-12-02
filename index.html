@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather</title>
+    <title>Väder</title>
 
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./reusable-classes.css">
@@ -13,18 +13,16 @@
     <script src="./src/forecast.js"></script>
     <script src="./src/previous-forcast.js"></script>
 </head>
-<body>
-
-    <h1>Weather</h1>
-
-    <form class="flex column">
-        <label for="station">Choose a location:</label>
-        <div class="station-input-container">
-            <input list="stations" name="station" id="station" autocomplete="off">
-            <ul class="stations-list hidden" id="stations-list"></ul>
-        </div>
+<body class="flex column">
+    <header class="flex row">
+        <input list="stations" name="station" id="station" autocomplete="off">
+        <ul class="stations-list hidden" id="stations-list"></ul>
         <button id="station-btn">Send</button>
-    </form>
-    
+    </header>
+    <main class="flex column grow">
+    </main>
+    <footer class="flex row">
+
+    </footer>
 </body>
 </html>
