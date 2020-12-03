@@ -25,5 +25,6 @@ function addEventListeners() {
         await setCity();
         await showData();
         await showPreviousData();
+        await showSun();
     });
 }
