@@ -1,5 +1,78 @@
 /* Welcome section */
 
 .welcome-section {
-    padding: 10rem 15% 1rem 15%;
+    padding: 10rem 15% 2rem 15%;
+}
+
+.welcome-today {
+    margin: 0;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.welcome-date {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.favorites-container {
+   width: 100%;
+   height: auto;
+   padding: 0 15%;
+   column-gap: 1rem;
+   row-gap: 1rem;
+   grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+}
+
+.favorite {
+    background-color: rgba(0, 0, 0, 0.35);
+    padding: 1rem;
+    grid-template-columns: auto auto 1fr;
+    grid-template-areas: 
+    "temp . fav-symbol"
+    "border border border"
+    "city city more-button";
+}
+
+.favorite-temp {
+    font-size: 2rem;
+    margin: 0;
+    grid-area: temp;
+}
+
+.favorite-symbol {
+    margin: 0;
+    justify-self: end;
+    grid-area: fav-symbol;
+}
+
+.border {
+    margin: 0.5rem 0;
+    border-bottom: 0.1rem white solid; 
+    grid-area: border;
+}
+
+.favorite-city {
+    grid-area: city;
+}
+
+.city {
+    margin: 0;
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}
+
+.city-symbol {
+    margin: 0;
+    grid-area: symbol;
+}
+
+.more-button {
+    justify-self: end;
+    align-self: end;
+    background: none;
+    border: none;
+    color: white;
+    text-decoration: underline;
+    grid-area: more-button;
 }
