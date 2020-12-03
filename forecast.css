@@ -1,0 +1,137 @@
+/* Main forecast */
+
+.main-forecast {
+    width: 100%;
+    height: auto;
+    padding: 4rem 15%;
+}
+
+/* City header */
+.city-header {
+    width: 100%;
+    grid-template-columns: auto 1fr;
+    grid-template-areas: 
+    "today ."
+    "city .";
+    border-bottom: white 0.2rem solid;
+}
+
+.today {
+    font-size: 1rem;
+    margin: 0;
+    grid-area: today;
+}
+
+.city {
+    grid-area: city;
+}
+
+.city-name {
+    margin: 1rem 1rem 1rem 0;
+}
+
+.city-name, .city-header span {
+    font-size: 2rem;
+}
+
+/* Main forecast data */
+
+.main-data {
+    padding: 1rem 0 1rem 0;
+    grid-template-columns: 30% 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "temp sunup sundown visibility humidity"
+    "temp exp-temp wind air-pressure ."
+    ;
+}
+
+.main-data h2 {
+    font-size: 0.8rem;
+}
+
+.temp {
+    font-size: 6rem;
+    grid-area: temp;
+    margin: 0;
+}
+
+.main-data div p {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.sunup {
+    grid-area: sunup;
+}
+
+.sundown {
+    grid-area: sundown;
+}
+
+.visibility {
+    grid-area: visibility;
+}
+
+.humidity {
+    grid-area: humidity;
+}
+
+.exp-temp {
+    grid-area: exp-temp;
+}
+
+.wind {
+    grid-area: wind;
+}
+
+.air-pressure {
+    grid-area: air-pressure;
+}
+
+/* Hourly forecast */
+
+.hourly-forecast {
+    width: 100%;
+    height: auto;
+    padding: 1.5rem 15%;
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.hourly-forecast-inner {
+    overflow-x: scroll;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.hourly-forecast-inner::-webkit-scrollbar {
+    display: none;
+}
+
+.hour-container {
+    margin: 0 1rem;
+}
+
+.hour-container span {
+    margin: 0.5rem 0;
+}
+
+.hour-container p {
+    margin: 0;
+}
+
+/* Weekly forecast */
+
+.weekly-forecast {
+    padding: 2rem 15%;
+}
+
+.day-container {
+    padding: 0 1rem;
+    background-color: rgba(0, 0, 0, 0.35)
+}
+
+.day-container span {
+    margin-left: 1rem;
+}
