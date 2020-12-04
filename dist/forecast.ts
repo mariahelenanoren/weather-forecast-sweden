@@ -15,6 +15,25 @@ async function presentForecastData() {
 }
 
 function presentForecastForToday(data) {
+    const todaysData = data.timeSeries[0]
+    console.log(todaysData)
+
+    presentCityName()
+    presentTemp(todaysData)
+}
+
+function presentTemp(todaysData) {
+    const tempTarget = document.querySelector("#temp")
+    const tempData = todaysData.parameters[1].values[0]
+    tempTarget.innerHTML = formatDataWithDeg(tempData);
+}
+
+function presentCityName() {
     const cityTarget = document.querySelector("#name")
     cityTarget.innerHTML = chosenCity.name;
+}
+
+function formatDataWithDeg(data) {
+    const formattedData = data + "&deg;"
+    return formattedData;
 }
