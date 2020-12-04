@@ -9,7 +9,12 @@ async function getForecast() {
     }
 }
 
-async function showData() {
+async function presentForecastData() {
     const data = await getForecast();
-    console.log(data)
+    presentForecastForToday(data)
+}
+
+function presentForecastForToday(data) {
+    const cityTarget = document.querySelector("#name")
+    cityTarget.innerHTML = chosenCity.name;
 }

@@ -23,7 +23,7 @@ function addEventListeners() {
     stationPicker.addEventListener("click", async function(event) {
         event.preventDefault();
         await setCity();
-        await showData();
+        await presentForecastData();
         await showPreviousData();
         await presentSun();
     });
