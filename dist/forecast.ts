@@ -20,6 +20,7 @@ function presentForecastForToday(data) {
 
     presentCityName()
     presentTemp(todaysData)
+    presentVisibility(todaysData)
 }
 
 function presentTemp(todaysData) {
@@ -37,3 +38,9 @@ function formatDataWithDeg(data) {
     const formattedData = Math.round(data) + "&deg;"
     return formattedData;
 }
+
+function presentVisibility(data) {
+    const visibilityTarget = document.querySelector("#visibility")
+    const visibilityData = data.parameters[2].values[0]
+    visibilityTarget.innerHTML = visibilityData + " km"
+} 
