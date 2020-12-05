@@ -21,6 +21,7 @@ function presentForecastForToday(data) {
     presentCityName()
     presentTemp(todaysData)
     presentVisibility(todaysData)
+    presentHumidity(todaysData)
 }
 
 function presentTemp(todaysData) {
@@ -43,4 +44,10 @@ function presentVisibility(data) {
     const visibilityTarget = document.querySelector("#visibility")
     const visibilityData = data.parameters[2].values[0]
     visibilityTarget.innerHTML = visibilityData + " km"
-} 
+}
+
+function presentHumidity(data) {
+    const humidityTarget = document.querySelector("#humidity")
+    const humidityData = data.parameters[5].values[0]
+    humidityTarget.innerHTML = humidityData + "&#37;" 
+}
