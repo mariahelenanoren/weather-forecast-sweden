@@ -20,8 +20,6 @@ async function presentSun() {
     const sunriseTarget = document.querySelector("#sunrise")
     sunsetTarget.innerHTML = formattedSunset
     sunriseTarget.innerHTML = formattedSunrise
-    console.log(sunrise)
-    console.log(sunset)
 }
 
 function formatSun(data: string) {
@@ -63,12 +61,12 @@ function checkDaylightSavings(){
     const year = dateToday.getFullYear()
     const daylightSavingsDate  = new Date(year, 5); // Date which has DST, for comparison
     let daylightSavings: boolean;
+
     if (dateToday.getTimezoneOffset() === daylightSavingsDate.getTimezoneOffset()) {
         daylightSavings = true;
     }
     else {
         daylightSavings = false;
     }
-    console.log(daylightSavings)
     return daylightSavings;
 }
