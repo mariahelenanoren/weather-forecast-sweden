@@ -34,6 +34,6 @@ function presentCityName() {
 }
 
 function formatDataWithDeg(data) {
-    const formattedData = data + "&deg;"
+    const formattedData = Math.round(data) + "&deg;"
     return formattedData;
 }
