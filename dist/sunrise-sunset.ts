@@ -1,5 +1,3 @@
-const dateToday = new Date();
-
 async function getSun() {
     const lon = chosenCity.lon
     const lat = chosenCity.lat
@@ -26,17 +24,51 @@ async function presentSun() {
     console.log(sunset)
 }
 
-/* NEEDS TO ACCOUNT FOR SUMMERTIME */
-function formatSun(sun: string) {
-    let formattedSun: string | string[]
-    formattedSun = sun.split(" ")
-    if (formattedSun[1] === "PM") {
-        formattedSun = formattedSun[0].split(":")
-        formattedSun = (Number(formattedSun[0]) + 13) + ":" + formattedSun[1] // +12 makes it summertime, +13 makes it wintertime
+function formatSun(data: string) {
+    let time: string | string[]
+    time = data.split(" ")
+    const timePeriod = time[1];
+    let formattedData;
+
+    const daylightSavings = checkDaylightSavings()
+    if (timePeriod === "PM") {
+        time = time[0].split(":")
+        let hour = Number(time[0])
+        const minutes = Number(time[1])
+        if (daylightSavings === true) {
+            formattedData = (hour + 12) + ":" + minutes
+        }
+        else if (daylightSavings === false) {
+            hour += 1
+            formattedData = (hour + 12) + ":" + minutes
+        }
+    }
+    else if (timePeriod === "AM") {
+        time = time[0].split(":")
+        let hour = Number(time[0])
+        const minutes = Number(time[1])
+        if (daylightSavings === true) {
+            formattedData = hour + ":" + minutes
+        }
+        else if (daylightSavings === false) {
+            hour += 1
+            formattedData = hour + ":" + minutes
+        }
+    }
+    return formattedData;
+}
+
+function checkDaylightSavings(){
+    const dateToday = new Date();
+    const year = dateToday.getFullYear()
+    const daylightSavingsDate  = new Date(year, 5); // Date which has DST, for comparison
+    let daylightSavings: boolean;
+    if (dateToday.getTimezoneOffset() === daylightSavingsDate.getTimezoneOffset()) {
+        daylightSavings = true;
     }
     else {
-        formattedSun = formattedSun[0].split(":")
-        formattedSun = formattedSun[0] + ":" + formattedSun[1]
+        daylightSavings = false;
     }
-    return formattedSun;
+    console.log(daylightSavings)
+    return daylightSavings;
 }
