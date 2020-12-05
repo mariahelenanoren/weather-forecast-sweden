@@ -22,11 +22,12 @@ function presentForecastForToday(data) {
     presentTemp(todaysData)
     presentVisibility(todaysData)
     presentHumidity(todaysData)
+    presentExpTemp(todaysData)
 }
 
-function presentTemp(todaysData) {
+function presentTemp(data) {
     const tempTarget = document.querySelector("#temp")
-    const tempData = todaysData.parameters[1].values[0]
+    const tempData = data.parameters[1].values[0]
     tempTarget.innerHTML = formatDataWithDeg(tempData);
 }
 
@@ -50,4 +51,19 @@ function presentHumidity(data) {
     const humidityTarget = document.querySelector("#humidity")
     const humidityData = data.parameters[5].values[0]
     humidityTarget.innerHTML = humidityData + "&#37;" 
+}
+
+function presentExpTemp(data) {
+    const expTempTarget = document.querySelector("#exp-temp")
+    const tempData = data.parameters[1].values[0]
+    const windData = data.parameters[4].values[0]
+    const expTemp = calculateExpTemp(tempData, windData)
+    expTempTarget.innerHTML = expTemp + "&deg;C"
+}
+
+function calculateExpTemp(tempData, windData) {
+    tempData = Math.round(tempData)
+    let expTemp = 13.12 + (0.6215 * tempData) - (13.956 * Math.pow(windData, 0.16)) + (0.48669 * tempData * Math.pow(windData, 0.16)) // Wind chill formula from SMHI
+    expTemp = Math.round(expTemp)
+    return expTemp;
 }
