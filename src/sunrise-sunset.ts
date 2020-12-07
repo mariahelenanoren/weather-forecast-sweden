@@ -50,11 +50,11 @@ function formatSun(data: string) {
         let hour = Number(time[0])
         const minutes = Number(time[1])
         if (daylightSavings === true) {
-            formattedData = hour + ":" + minutes
+            formattedData = formatSingleDigitValues(hour) + ":" + minutes
         }
         else if (daylightSavings === false) {
             hour += 1
-            formattedData = hour + ":" + minutes
+            formattedData = formatSingleDigitValues(hour) + ":" + minutes
         }
     }
     return formattedData;

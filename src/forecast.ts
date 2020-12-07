@@ -71,7 +71,6 @@ function presentExpTemp(data) {
 }
 
 function calculateExpTemp(tempData, windData) {
-    tempData = Math.round(tempData)
     let expTemp = 13.12 + (0.6215 * tempData) - (13.956 * Math.pow(windData, 0.16)) + (0.48669 * tempData * Math.pow(windData, 0.16)) // Wind chill formula from SMHI
     expTemp = Math.round(expTemp)
     return expTemp;
