@@ -11,5 +11,4 @@ async function getPreviousForecast() {
 
 async function showPreviousData() {
     const data = await getPreviousForecast();
-    console.log(data)
 }

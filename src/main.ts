@@ -1,3 +1,7 @@
+const dateToday = new Date();
+const year = dateToday.getFullYear();
+const month = dateToday.getMonth();
+const date = dateToday.getDate();
 interface chosenCity {
     name: String,
     lon: String,

@@ -12,7 +12,8 @@ async function getForecast() {
 async function presentForecastData() {
     const data = await getForecast();
     presentForecastForToday(data)
-    present36HForecast(data)
+    present30HForecast(data)
+    present9DayForecast(data)
 }
 
 function presentForecastForToday(data) {
@@ -90,12 +91,11 @@ function presentAirPressure(data) {
     airPressureTarget.innerHTML = airPressure + " hPa"
 }
 
-function present36HForecast(data) {
+function present30HForecast(data) {
     const container = document.querySelector(".hourly-forecast-inner")
     const hourData = data.timeSeries
 
-    for (let i = 0; i < 36; i++) {
-        console.log(hourData[i])
+    for (let i = 0; i <= 30; i++) {
         const div = document.createElement("div")
         div.setAttribute("class", "hour-container flex column center")
         
@@ -114,7 +114,6 @@ function present36HForecast(data) {
 
         const pTemp = document.createElement("p")
         pTemp.setAttribute("class", "hour-temp normal")
-        console.log(hourData[i].parameters[1].values[0])
         pTemp.innerHTML = formatDataWithCel(hourData[i].parameters[1].values[0]) // Change to fit temp
 
         div.append(pTime, span, pTemp)
@@ -130,3 +129,100 @@ function formatHour(data) {
     const hour = timeSets[0] + ":00"
     return hour;
 }
+
+function present9DayForecast(data) {
+    const dayData = data.timeSeries
+    const container = document.querySelector(".weekly-forecast")
+    for (let d = 0; d < 11; d++) {
+        let validYear: number | string = Number(year)
+        let validMonth: number | string = Number(month) + 1 // +1 because month variable is zero-based
+        let validDate: number | string = Number(date) + 1 + d // +1 because forecast should start from day after today
+        if (checkEndOfMonth(validMonth, validDate) === true) {
+            validMonth += 1;
+            validDate = 1;
+        }
+        const validTime = validYear + "-" + formatSingleDigitValues(validMonth) + "-" + formatSingleDigitValues(validDate) + "T12:00:00Z"
+        for (let i = 0; i < dayData.length; i++) {
+            if (dayData[i].validTime === validTime) {
+                const innerContainer = document.createElement("div")
+                innerContainer.setAttribute("class", "day-container flex row align-center justify-space-between")
+
+                const dateP = document.createElement("p")
+                dateP.innerHTML = getNameOfWeekday(validYear, validMonth, validDate) + " " + validDate + " " + getNameOfMonth(validMonth)
+
+                const div = document.createElement("div")
+                div.setAttribute("class", "flex row center")
+
+                const tempP = document.createElement("p")
+                tempP.innerHTML = formatDataWithCel(dayData[i].parameters[1].values[0])
+
+                const span = document.createElement("span")
+                span.setAttribute("class", "material-icons")
+                span.innerHTML = "brightness_2" // Change this to fit weather
+
+                div.append(tempP, span)
+                innerContainer.append(dateP, div)
+                container.append(innerContainer)
+            }
+        }
+    }
+}
+
+function getNameOfMonth(month) {
+    switch(month) {
+        case 1: return "januari"
+        case 2: return "februari"
+        case 3: return "mars"
+        case 4: return "april"
+        case 5: return "maj"
+        case 6: return "juni"
+        case 7: return "juli"
+        case 8: return "augusti"
+        case 9: return "september"
+        case 10: return "oktober"
+        case 11: return "november"
+        case 12: return "december"
+    }
+}
+
+function getNameOfWeekday(year, month, date) {
+    const day = new Date(year, month - 1, date - 1).getDay();
+    switch(day) {
+        case 0: return "Måndag"
+        case 1: return "Tisdag"
+        case 2: return "Onsdag"
+        case 3: return "Torsdag"
+        case 4: return "Fredag"
+        case 5: return "Lördag"
+        case 6: return "Söndag"
+    }
+}
+
+function formatSingleDigitValues(data) {
+    let formattedData = String(data)
+    if (formattedData.length < 2) {
+        formattedData = "0" + formattedData
+    }
+    return formattedData;
+}
+
+function checkEndOfYear(month, day) {
+    let currentYear = year
+    if (month === 12 && day > 31) {
+        currentYear += 1;
+    }
+    return currentYear;
+}
+
+function checkEndOfMonth(month, day) {
+    const daysInMonth = getDaysInMonth(year, month)
+    let nextMonth = false;
+    if (day > daysInMonth) {
+        nextMonth = true;
+    }
+    return nextMonth;
+}
+
+function getDaysInMonth(month,year) {
+   return new Date(year, month, 0).getDate();
+  };

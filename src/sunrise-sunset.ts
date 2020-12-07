@@ -29,7 +29,6 @@ function formatSun(data: string) {
     let formattedData;
 
     const daylightSavings = checkDaylightSavings()
-    console.log(daylightSavings)
     if (timePeriod === "PM") {
         time = time[0].split(":")
         let hour = Number(time[0])
@@ -62,8 +61,6 @@ function formatSun(data: string) {
 }
 
 function checkDaylightSavings(){
-    const dateToday = new Date();
-    const year = dateToday.getFullYear()
     const daylightSavingsDate  = new Date(year, 5); // Date which has DST, for comparison
     let daylightSavings: boolean;
 
