@@ -12,11 +12,11 @@ async function getForecast() {
 async function presentForecastData() {
     const data = await getForecast();
     presentForecastForToday(data)
+    present24HForecast(data)
 }
 
 function presentForecastForToday(data) {
     const todaysData = data.timeSeries[0]
-    console.log(todaysData)
 
     presentCityName()
     presentTemp(todaysData)
@@ -82,4 +82,37 @@ function presentAirPressure(data) {
     const airPressureData = data.parameters[0].values[0]
     const airPressure = Math.round(airPressureData)
     airPressureTarget.innerHTML = airPressure + " hPa"
+}
+
+function present24HForecast(data) {
+    const container = document.querySelector(".hourly-forecast-inner")
+    const hourData = data.timeSeries
+
+    for (let i = 0; i < hourData.length; i++) {
+        const div = document.createElement("div")
+        div.setAttribute("class", "hour-container flex column center")
+        
+        const pTime = document.createElement("p")
+        if (i === 0) {
+            pTime.setAttribute("class", "semi-bold")
+            pTime.innerHTML = "Nu"
+        } else {
+            pTime.setAttribute("class", "normal")
+            pTime.innerHTML = "18:00" // Change this to fit time
+        }
+
+        const span = document.createElement("span")
+        span.setAttribute("class", "material-icons")
+        span.innerHTML = "brightness_2" // Change this to fit weather
+
+        const pTemp = document.createElement("p")
+        pTemp.setAttribute("class", "hour-temp normal")
+        pTemp.innerHTML = "16&deg;C" // Change to fit temp
+
+        div.append(pTime, span, pTemp)
+        container.append(div)
+        
+        console.log(hourData[i].validTime)
+        console.log(hourData[i].parameters[1].values[0])
+    }
 }
