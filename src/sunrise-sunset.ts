@@ -29,16 +29,21 @@ function formatSun(data: string) {
     let formattedData;
 
     const daylightSavings = checkDaylightSavings()
+    console.log(daylightSavings)
     if (timePeriod === "PM") {
         time = time[0].split(":")
         let hour = Number(time[0])
+        /* Accounts for unreliability of API time format */
+        if (hour < 10) {
+            hour = addTwelveHours(hour)
+        }
         const minutes = Number(time[1])
         if (daylightSavings === true) {
-            formattedData = (hour + 12) + ":" + minutes
+            formattedData = hour + ":" + minutes
         }
         else if (daylightSavings === false) {
             hour += 1
-            formattedData = (hour + 12) + ":" + minutes
+            formattedData = hour + ":" + minutes
         }
     }
     else if (timePeriod === "AM") {
@@ -69,4 +74,9 @@ function checkDaylightSavings(){
         daylightSavings = false;
     }
     return daylightSavings;
+}
+
+function addTwelveHours(hour) {
+    const formattedHour = hour + 12
+    return formattedHour;
 }
