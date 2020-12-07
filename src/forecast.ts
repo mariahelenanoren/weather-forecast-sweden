@@ -12,7 +12,7 @@ async function getForecast() {
 async function presentForecastData() {
     const data = await getForecast();
     presentForecastForToday(data)
-    present24HForecast(data)
+    present36HForecast(data)
 }
 
 function presentForecastForToday(data) {
@@ -43,10 +43,16 @@ function formatDataWithDeg(data) {
     return formattedData;
 }
 
+function formatDataWithCel(data) {
+    const formattedData = Math.round(data) + "&deg;C"
+    return formattedData;
+}
+
 function presentVisibility(data) {
     const visibilityTarget = document.querySelector("#visibility")
     const visibilityData = data.parameters[2].values[0]
-    visibilityTarget.innerHTML = visibilityData + " km"
+    const visibility = Math.round(visibilityData)
+    visibilityTarget.innerHTML = visibility + " km"
 }
 
 function presentHumidity(data) {
@@ -84,11 +90,12 @@ function presentAirPressure(data) {
     airPressureTarget.innerHTML = airPressure + " hPa"
 }
 
-function present24HForecast(data) {
+function present36HForecast(data) {
     const container = document.querySelector(".hourly-forecast-inner")
     const hourData = data.timeSeries
 
-    for (let i = 0; i < hourData.length; i++) {
+    for (let i = 0; i < 36; i++) {
+        console.log(hourData[i])
         const div = document.createElement("div")
         div.setAttribute("class", "hour-container flex column center")
         
@@ -98,7 +105,7 @@ function present24HForecast(data) {
             pTime.innerHTML = "Nu"
         } else {
             pTime.setAttribute("class", "normal")
-            pTime.innerHTML = "18:00" // Change this to fit time
+            pTime.innerHTML = formatHour(hourData[i].validTime) // Change this to fit time
         }
 
         const span = document.createElement("span")
@@ -107,12 +114,19 @@ function present24HForecast(data) {
 
         const pTemp = document.createElement("p")
         pTemp.setAttribute("class", "hour-temp normal")
-        pTemp.innerHTML = "16&deg;C" // Change to fit temp
+        console.log(hourData[i].parameters[1].values[0])
+        pTemp.innerHTML = formatDataWithCel(hourData[i].parameters[1].values[0]) // Change to fit temp
 
         div.append(pTime, span, pTemp)
         container.append(div)
-        
-        console.log(hourData[i].validTime)
-        console.log(hourData[i].parameters[1].values[0])
     }
+}
+
+function formatHour(data) {
+    const date = data
+    let time = date.split("T")
+    time = time[1]
+    const timeSets = time.split(":")
+    const hour = timeSets[0] + ":00"
+    return hour;
 }
