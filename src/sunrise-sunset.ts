@@ -38,11 +38,11 @@ function formatSun(data: string) {
         }
         const minutes = Number(time[1])
         if (daylightSavings === true) {
-            formattedData = hour + ":" + minutes
+            formattedData = hour + ":" + formatSingleDigitValues(minutes)
         }
         else if (daylightSavings === false) {
             hour += 1
-            formattedData = hour + ":" + minutes
+            formattedData = hour + ":" + formatSingleDigitValues(minutes)
         }
     }
     else if (timePeriod === "AM") {
@@ -50,11 +50,11 @@ function formatSun(data: string) {
         let hour = Number(time[0])
         const minutes = Number(time[1])
         if (daylightSavings === true) {
-            formattedData = formatSingleDigitValues(hour) + ":" + minutes
+            formattedData = formatSingleDigitValues(hour) + ":" + formatSingleDigitValues(minutes)
         }
         else if (daylightSavings === false) {
             hour += 1
-            formattedData = formatSingleDigitValues(hour) + ":" + minutes
+            formattedData = formatSingleDigitValues(hour) + ":" + formatSingleDigitValues(minutes)
         }
     }
     return formattedData;

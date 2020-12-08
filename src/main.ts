@@ -2,6 +2,7 @@ const dateToday = new Date();
 const year = dateToday.getFullYear();
 const month = dateToday.getMonth();
 const date = dateToday.getDate();
+const hour = dateToday.getTime();
 interface chosenCity {
     name: String,
     lon: String,

@@ -98,30 +98,37 @@ function presentAirPressure(data) {
 function present30HForecast(data) {
     const container = document.querySelector(".hourly-forecast-inner")
     const hourData = data.timeSeries
+    let skipFirstHour: boolean;
+    skipFirstHour = false;
 
-    for (let i = 0; i <= 30; i++) {
-        const div = document.createElement("div")
-        div.setAttribute("class", "hour-container flex column center")
-        
-        const pTime = document.createElement("p")
-        if (i === 0) {
-            pTime.setAttribute("class", "semi-bold")
-            pTime.innerHTML = "Nu"
+    for (let i = 0; i < 31; i++) {
+        if (formatSingleDigitValues(hour) + ":00" === formatHour(hourData[i].validTime)) {
+            skipFirstHour = true;
         } else {
-            pTime.setAttribute("class", "normal")
-            pTime.innerHTML = formatHour(hourData[i].validTime) // Change this to fit time
+            const div = document.createElement("div")
+            div.setAttribute("class", "hour-container flex column center")
+
+            const pTime = document.createElement("p")
+
+            if (i === 0 && skipFirstHour === false || i === 1 && skipFirstHour === true) {
+                pTime.setAttribute("class", "semi-bold")
+                pTime.innerHTML = "Nu"
+            } else {
+                pTime.setAttribute("class", "normal")
+                pTime.innerHTML = formatHour(hourData[i].validTime) // Change this to fit time
+            }
+    
+            const span = document.createElement("span")
+            span.setAttribute("class", "material-icons")
+            span.innerHTML = "brightness_2" // Change this to fit weather
+    
+            const pTemp = document.createElement("p")
+            pTemp.setAttribute("class", "hour-temp normal")
+            pTemp.innerHTML = formatDataWithCel(hourData[i].parameters[1].values[0])
+    
+            div.append(pTime, span, pTemp)
+            container.append(div)
         }
-
-        const span = document.createElement("span")
-        span.setAttribute("class", "material-icons")
-        span.innerHTML = "brightness_2" // Change this to fit weather
-
-        const pTemp = document.createElement("p")
-        pTemp.setAttribute("class", "hour-temp normal")
-        pTemp.innerHTML = formatDataWithCel(hourData[i].parameters[1].values[0]) // Change to fit temp
-
-        div.append(pTime, span, pTemp)
-        container.append(div)
     }
 }
 
@@ -137,7 +144,7 @@ function formatHour(data) {
 function present9DayForecast(data) {
     const dayData = data.timeSeries
     const container = document.querySelector(".weekly-forecast")
-    for (let d = 0; d < 11; d++) {
+    for (let d = 0; d < 10; d++) {
         let validYear: number | string = Number(year)
         let validMonth: number | string = Number(month) + 1 // +1 because month variable is zero-based
         let validDate: number | string = Number(date) + 1 + d // +1 because forecast should start from day after today
