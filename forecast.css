@@ -13,9 +13,15 @@
     margin-bottom: 1rem;
     grid-template-columns: auto 1fr;
     grid-template-areas: 
-    "today ."
-    "city .";
+    "today . ."
+    "city . favorite";
     border-bottom: white 0.2rem solid;
+}
+
+.favorite {
+    align-self: end;
+    margin: 0.5rem 0;
+    grid-area: favorite;
 }
 
 .today {
