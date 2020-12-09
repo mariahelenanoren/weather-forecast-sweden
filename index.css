@@ -31,7 +31,7 @@
     padding: 1.5rem;
     grid-template-columns: auto auto 1fr;
     grid-template-areas: 
-    "temp . fav-symbol"
+    "temp temp fav-symbol"
     "border border border"
     "city city more-button";
 }
