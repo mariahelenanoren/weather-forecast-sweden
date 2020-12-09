@@ -109,7 +109,6 @@ function present30HForecast(data) {
             div.setAttribute("class", "hour-container flex column center")
 
             const pTime = document.createElement("p")
-
             if (i === 0 && skipFirstHour === false || i === 1 && skipFirstHour === true) {
                 pTime.setAttribute("class", "semi-bold")
                 pTime.innerHTML = "Nu"
