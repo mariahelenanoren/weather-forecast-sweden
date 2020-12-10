@@ -1,13 +1,29 @@
-function displayFavorites() {
+async function getForecastForFavorites(lon, lat) {
+    try {
+        const result = await fetch("https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/" + lon + "/lat/" + lat + "/data.json")
+        const data = await result.json()
+        return data;
+    } catch(error) {
+    }
+}
+
+async function displayFavorites() {
     const container = document.querySelector(".favorites-container")
 
     for (const favorite in favoritesList) {
+        const favoriteData = await getForecastForFavorites(favoritesList[favorite].lon, favoritesList[favorite].lat)
+        const favoriteDataNow = favoriteData.timeSeries[0]
+
         const innerContainerDiv = document.createElement("div")
         innerContainerDiv.setAttribute("class", "favorite grid")
 
         const pTemp = document.createElement("p")
         pTemp.setAttribute("class", "favorite-temp normal")
-        pTemp.innerHTML = "18&deg;C"
+        for (const parameter in favoriteDataNow.parameters) {
+            if(favoriteDataNow.parameters[parameter].name === "t") {
+                pTemp.innerHTML = formatDataWithCel(favoriteDataNow.parameters[parameter].values[0])
+            }
+        }
 
         const favSymbol = document.createElement("span")
         favSymbol.setAttribute("class", "material-icons favorite-symbol")
