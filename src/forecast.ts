@@ -1,6 +1,4 @@
-async function getForecast() {
-    const lon = chosenCity.lon
-    const lat = chosenCity.lat
+async function getForecast(lon, lat) {
     try {
         const result = await fetch("https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/" + lon + "/lat/" + lat + "/data.json")
         const data = await result.json()
@@ -9,8 +7,14 @@ async function getForecast() {
     }
 }
 
+function getChosenCity() {
+    const chosenCityLS = JSON.parse(localStorage.getItem("chosenCity"))
+    return chosenCityLS;
+}
+
 async function presentForecastData() {
-    const data = await getForecast();
+    const chosenCityLS = getChosenCity()
+    const data = await getForecast(chosenCityLS.lon, chosenCityLS.lat);
     presentForecastForToday(data)
     present30HForecast(data)
     present9DayForecast(data)
@@ -23,7 +27,7 @@ function presentForecastForToday(data) {
 
     const parameters = todaysData.parameters
 
-    /* Accounts for the parameters not always having the same index value */
+    /* Accounts for irregularities in parameter index */
     for (const parameter in parameters) {
         switch(parameters[parameter].name) {
             case "t":
@@ -59,8 +63,9 @@ function presentTemp(data) {
 }
 
 function presentCityName() {
+    const chosenCityLS = getChosenCity()
     const cityTarget = document.querySelector("#name")
-    cityTarget.innerHTML = chosenCity.name;
+    cityTarget.innerHTML = chosenCityLS.name;
 }
 
 function formatDataWithDeg(data) {
@@ -120,7 +125,6 @@ function presentAirPressure(data) {
 function present30HForecast(data) {
     const container = document.querySelector(".hourly-forecast-inner")
     const hourData = data.timeSeries
-    console.log(hourData)
     let skipFirstHour: boolean;
     skipFirstHour = false;
 
@@ -146,7 +150,7 @@ function present30HForecast(data) {
     
             const pTemp = document.createElement("p")
             pTemp.setAttribute("class", "hour-temp normal")
-            /* Accounts for the parameters not always having the same index */
+            /* Accounts for irregularities in parameter index */
             for (const parameter in hourData[i].parameters) {
                 if (hourData[i].parameters[parameter].name === "t") {
                     pTemp.innerHTML = formatDataWithCel(hourData[i].parameters[parameter].values[0])
@@ -192,7 +196,7 @@ function present9DayForecast(data) {
                 div.setAttribute("class", "flex row center")
 
                 const pTemp = document.createElement("p")                
-                /* Accounts for the parameters not always having the same index */
+                /* Accounts for irregularities in parameter index */
                 for (const parameter in dayData[i].parameters) {
                     if (dayData[i].parameters[parameter].name === "t") {
                         pTemp.innerHTML = formatDataWithCel(dayData[i].parameters[parameter].values[0])

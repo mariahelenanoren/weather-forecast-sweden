@@ -53,6 +53,7 @@ h1 {
 header a {
     font-size: 1rem;
     color: white;
+    text-decoration: none;
 }
 
 header a:hover {

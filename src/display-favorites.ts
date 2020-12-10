@@ -19,6 +19,7 @@ async function displayFavorites() {
 
         const pTemp = document.createElement("p")
         pTemp.setAttribute("class", "favorite-temp normal")
+        /* Accounts for irregularities in parameter index */
         for (const parameter in favoriteDataNow.parameters) {
             if(favoriteDataNow.parameters[parameter].name === "t") {
                 pTemp.innerHTML = formatDataWithCel(favoriteDataNow.parameters[parameter].values[0])
