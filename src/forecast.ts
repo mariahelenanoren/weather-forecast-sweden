@@ -21,7 +21,13 @@ async function presentForecastData() {
 }
 
 function presentForecastForToday(data) {
-    const todaysData = data.timeSeries[0]
+    let todaysData;
+    /* Accounts for late data updates */
+    if (formatHour(data.timeSeries[0].validTime) === hour + ":00") {
+        todaysData = data.timeSeries[0]
+    } else {
+        todaysData = data.timeSeries[1]
+    }
     let temp;
     let wind;
 
@@ -129,6 +135,7 @@ function present30HForecast(data) {
     skipFirstHour = false;
 
     for (let i = 0; i < 31; i++) {
+        /* Accounts for late data updates */
         if (formatSingleDigitValues(hour) + ":00" === formatHour(hourData[i].validTime)) {
             skipFirstHour = true;
         } else {
