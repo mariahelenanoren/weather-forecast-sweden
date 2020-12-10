@@ -1,6 +1,4 @@
-async function getSun() {
-    const lon = chosenCity.lon
-    const lat = chosenCity.lat
+async function getSun(lon, lat) {
     try {
         const result = await fetch("https://api.sunrise-sunset.org/json?lat=" + lat +"&lng=" + lon + "&date=today")
         const data = await result.json()
@@ -10,7 +8,8 @@ async function getSun() {
 }
 
 async function presentSun() {
-    const data = await getSun();
+    const chosenCityLS = getChosenCity()
+    const data = await getSun(chosenCityLS.lon, chosenCityLS.lat);
     const sunrise = data.sunrise;
     const sunset = data.sunset;
     const formattedSunset = formatSun(sunset)

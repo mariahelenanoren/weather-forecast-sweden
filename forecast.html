@@ -33,7 +33,9 @@
                 <div class="search-field">
                     <input list="stations" name="station" id="station" autocomplete="off">
                     <ul class="stations-list hidden" id="stations-list"></ul>
-                    <button id="station-btn">Send</button>
+                    <form action="./forecast.html">
+                        <button type="submit" id="station-btn">Send</button>
+                    </form>
                 </div>
             </header>
 
@@ -41,7 +43,7 @@
                 <div class="city-header grid">
                     <p class="today normal">Idag</p>
                     <div class="city flex center">
-                        <p class="city-name semi-bold" id="name">Falkenberg</p> <!-- JS CODE FOR THIS -->
+                        <p class="city-name semi-bold" id="name"></p> <!-- JS CODE FOR THIS -->
                         <span class="material-icons" id="city-w-icon">
                             brightness_7 <!-- JS CODE FOR THIS -->
                         </span>
@@ -52,22 +54,22 @@
                 </div>
 
                 <div class="main-data grid">
-                    <p class="temp light" id="temp">18&deg;</p>
+                    <p class="temp light" id="temp"></p>
                     <div class="sunup flex column">
                         <h2 class="semi-bold">Soluppgång</h2>
-                        <p id="sunrise" class="light">08:24</p> <!-- JS CODE FOR THIS -->
+                        <p id="sunrise" class="light"></p> <!-- JS CODE FOR THIS -->
                     </div>
                     <div class="sundown flex column">
                         <h2 class="semi-bold">Solnedgång</h2>
-                        <p id="sunset" class="light">14:53</p> <!-- JS CODE FOR THIS -->
+                        <p id="sunset" class="light"></p> <!-- JS CODE FOR THIS -->
                     </div>
                     <div class="visibility flex column">
                         <h2 class="semi-bold">Sikt</h2>
-                        <p id="visibility" class="light">16.1 km</p> <!-- JS CODE FOR THIS -->
+                        <p id="visibility" class="light"></p> <!-- JS CODE FOR THIS -->
                     </div>
                     <div class="humidity flex column">
                         <h2 class="semi-bold">Luftfuktighet</h2>
-                        <p id="humidity" class="light">93%</p> <!-- JS CODE FOR THIS -->
+                        <p id="humidity" class="light"></p> <!-- JS CODE FOR THIS -->
                     </div>
                     <div class="exp-temp flex column">
                         <h2 class="semi-bold">Känns som</h2>
@@ -75,11 +77,11 @@
                     </div>
                     <div class="wind flex column">
                         <h2 class="semi-bold">Vind</h2>
-                        <p id="wind" class="light">1m/s</p> <!-- JS CODE FOR THIS -->
+                        <p id="wind" class="light"></p> <!-- JS CODE FOR THIS -->
                     </div>
                     <div class="airpressure flex column">
                         <h2 class="semi-bold">Lufttryck</h2>
-                        <p id="air-pressure" class="light">1014 hPa</p> <!-- JS CODE FOR THIS -->
+                        <p id="air-pressure" class="light"></p> <!-- JS CODE FOR THIS -->
                     </div>
                 </div>
             </div>

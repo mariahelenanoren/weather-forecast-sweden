@@ -2,6 +2,7 @@ window.addEventListener("load", forecastMain);
 
 function forecastMain() {
     loadLSIntoFavoritesList();
+    presentSun()
     presentForecastData();
     cityPickerMain();
     addEventListeners();
@@ -13,10 +14,9 @@ function addEventListeners() {
 
     favorite.addEventListener("click", addOrRemoveFavorite)
 
-    stationPicker.addEventListener("click", async function(event) {
-        event.preventDefault();
-        await setCity();
+    stationPicker.addEventListener("click", function() {
+        setCity();
         presentForecastData()
-        await presentSun();
+        presentSun();
     });
 }
