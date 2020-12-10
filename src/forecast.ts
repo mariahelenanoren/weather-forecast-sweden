@@ -18,19 +18,43 @@ async function presentForecastData() {
 
 function presentForecastForToday(data) {
     const todaysData = data.timeSeries[0]
+    let temp;
+    let wind;
+
+    const parameters = todaysData.parameters
+
+    /* Accounts for the parameters not always having the same index value */
+    for (const parameter in parameters) {
+        switch(parameters[parameter].name) {
+            case "t":
+                presentTemp(parameters[parameter])
+                temp = parameters[parameter].values[0]
+                ;break
+            case "vis":
+                presentVisibility(parameters[parameter])
+                ;break
+            case "r":
+                presentHumidity(parameters[parameter])
+                ;break
+            case "ws":
+                presentWind(parameters[parameter])
+                wind = parameters[parameter].values[0]
+                ;break
+            case "msl":
+                presentAirPressure(parameters[parameter])
+            ;break
+            default:
+                break;
+        }
+    }
 
     presentCityName()
-    presentTemp(todaysData)
-    presentVisibility(todaysData)
-    presentHumidity(todaysData)
-    presentExpTemp(todaysData)
-    presentWind(todaysData)
-    presentAirPressure(todaysData)
+    presentExpTemp(temp, wind)
 }
 
 function presentTemp(data) {
     const tempTarget = document.querySelector("#temp")
-    const tempData = data.parameters[1].values[0]
+    const tempData = data.values[0]
     tempTarget.innerHTML = formatDataWithDeg(tempData);
 }
 
@@ -51,22 +75,20 @@ function formatDataWithCel(data) {
 
 function presentVisibility(data) {
     const visibilityTarget = document.querySelector("#visibility")
-    const visibilityData = data.parameters[2].values[0]
+    const visibilityData = data.values[0]
     const visibility = Math.round(visibilityData)
     visibilityTarget.innerHTML = visibility + " km"
 }
 
 function presentHumidity(data) {
     const humidityTarget = document.querySelector("#humidity")
-    const humidityData = data.parameters[5].values[0]
+    const humidityData = data.values[0]
     humidityTarget.innerHTML = humidityData + "&#37;" 
 }
 
-function presentExpTemp(data) {
+function presentExpTemp(temp, wind) {
     const expTempTarget = document.querySelector("#exp-temp")
-    const tempData = data.parameters[1].values[0]
-    const windData = data.parameters[4].values[0]
-    const expTemp = calculateExpTemp(tempData, windData)
+    const expTemp = calculateExpTemp(temp, wind)
     expTempTarget.innerHTML = expTemp + "&deg;C"
 }
 
@@ -83,14 +105,14 @@ function calculateExpTemp(tempData, windData) {
 
 function presentWind(data) {
     const windTarget = document.querySelector("#wind")
-    const windData = data.parameters[4].values[0]
+    const windData = data.values[0]
     const wind = Math.round(windData)
     windTarget.innerHTML = wind + " m/s"
 }
 
 function presentAirPressure(data) {
     const airPressureTarget = document.querySelector("#air-pressure")
-    const airPressureData = data.parameters[0].values[0]
+    const airPressureData = data.values[0]
     const airPressure = Math.round(airPressureData)
     airPressureTarget.innerHTML = airPressure + " hPa"
 }
@@ -98,6 +120,7 @@ function presentAirPressure(data) {
 function present30HForecast(data) {
     const container = document.querySelector(".hourly-forecast-inner")
     const hourData = data.timeSeries
+    console.log(hourData)
     let skipFirstHour: boolean;
     skipFirstHour = false;
 
@@ -114,7 +137,7 @@ function present30HForecast(data) {
                 pTime.innerHTML = "Nu"
             } else {
                 pTime.setAttribute("class", "normal")
-                pTime.innerHTML = formatHour(hourData[i].validTime) // Change this to fit time
+                pTime.innerHTML = formatHour(hourData[i].validTime)
             }
     
             const span = document.createElement("span")
@@ -123,7 +146,12 @@ function present30HForecast(data) {
     
             const pTemp = document.createElement("p")
             pTemp.setAttribute("class", "hour-temp normal")
-            pTemp.innerHTML = formatDataWithCel(hourData[i].parameters[1].values[0])
+            /* Accounts for the parameters not always having the same index */
+            for (const parameter in hourData[i].parameters) {
+                if (hourData[i].parameters[parameter].name === "t") {
+                    pTemp.innerHTML = formatDataWithCel(hourData[i].parameters[parameter].values[0])
+                }
+            }
     
             div.append(pTime, span, pTemp)
             container.append(div)
@@ -157,21 +185,26 @@ function present9DayForecast(data) {
                 const innerContainer = document.createElement("div")
                 innerContainer.setAttribute("class", "day-container flex row align-center justify-space-between")
 
-                const dateP = document.createElement("p")
-                dateP.innerHTML = getNameOfWeekday(validYear, validMonth, validDate) + " " + validDate + " " + getNameOfMonth(validMonth)
+                const pDate = document.createElement("p")
+                pDate.innerHTML = getNameOfWeekday(validYear, validMonth, validDate) + " " + validDate + " " + getNameOfMonth(validMonth)
 
                 const div = document.createElement("div")
                 div.setAttribute("class", "flex row center")
 
-                const tempP = document.createElement("p")
-                tempP.innerHTML = formatDataWithCel(dayData[i].parameters[1].values[0])
+                const pTemp = document.createElement("p")                
+                /* Accounts for the parameters not always having the same index */
+                for (const parameter in dayData[i].parameters) {
+                    if (dayData[i].parameters[parameter].name === "t") {
+                        pTemp.innerHTML = formatDataWithCel(dayData[i].parameters[parameter].values[0])
+                    }
+                }
 
                 const span = document.createElement("span")
                 span.setAttribute("class", "material-icons")
                 span.innerHTML = "brightness_2" // Change this to fit weather
 
-                div.append(tempP, span)
-                innerContainer.append(dateP, div)
+                div.append(pTemp, span)
+                innerContainer.append(pDate, div)
                 container.append(innerContainer)
             }
         }
