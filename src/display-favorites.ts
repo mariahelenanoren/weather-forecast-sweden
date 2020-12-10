@@ -19,6 +19,10 @@ async function displayFavorites() {
 
         const favSymbol = document.createElement("span")
         favSymbol.setAttribute("class", "material-icons favorite-symbol")
+        favSymbol.addEventListener("click", function() {
+            addOrRemoveFavorite(favoritesList[favorite].name)
+            favSymbol.parentElement.remove()
+        })
         favSymbol.innerHTML = "favorite"
 
         const borderDiv = document.createElement("div")
@@ -41,7 +45,6 @@ async function displayFavorites() {
         moreButton.innerHTML = "Mer info"
 
         cityDiv.append(pCity, weatherSymbol)
-        console.log(favorite, favoritesList, favoritesList[favorite])
         innerContainerDiv.append(pTemp, favSymbol, borderDiv, cityDiv, moreButton)
         container.append(innerContainerDiv)
     }
@@ -61,7 +64,6 @@ async function presentFavoriteForecast(index) {
         chosenCity.name = favoritesList[index].name
         chosenCity.lon = favoritesList[index].lon
         chosenCity.lat = favoritesList[index].lat
-        console.log(chosenCity)
         setChosenCity()
     }
 }

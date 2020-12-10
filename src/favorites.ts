@@ -5,12 +5,14 @@ function loadLSIntoFavoritesList() {
     }
 }
 
-function addOrRemoveFavorite() {
-    const isFavorite = checkIfFavorite(chosenCity.name)
+function addOrRemoveFavorite(cityName) {
+    const isFavorite = checkIfFavorite(cityName)
     if (isFavorite) {
-        removeFavorite(chosenCity.name)
+        removeFavorite(cityName)
+        console.log("remove")
     } else {
-        addFavorite(chosenCity.name)
+        console.log("add")
+        addFavorite()
     }
 }
 
@@ -24,22 +26,9 @@ function checkIfFavorite(cityName):boolean {
     return isFavorite;
 }
 
-async function addFavorite(cityName) {
-    const favoriteCity = {
-        name: "",
-        lon: "",
-        lat: ""
-    }
-    const data = await getSwedishCities()
-
-    for (const city in data) {
-        if (cityName === data[city].city) {
-            favoriteCity.name = data[city].city
-            favoriteCity.lon = data[city].lng
-            favoriteCity.lat = data[city].lat
-        }
-    }
-    favoritesList.push(favoriteCity)
+async function addFavorite() {
+    console.log(chosenCity)
+    favoritesList.push(chosenCity)
     localStorage.setItem("favorites", JSON.stringify(favoritesList))
 }
 

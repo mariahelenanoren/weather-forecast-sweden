@@ -8,7 +8,6 @@ function indexMain() {
 }
 
 function addEventListenersIndex() {
-    const favorite = document.querySelector("#favorite")
     const stationPicker = document.querySelector("#station-btn")
 
     stationPicker.addEventListener("click", async function() {
