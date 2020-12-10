@@ -2,7 +2,7 @@ const dateToday = new Date();
 const year = dateToday.getFullYear();
 const month = dateToday.getMonth();
 const date = dateToday.getDate();
-const hour = dateToday.getTime();
+const hour = dateToday.getHours();
 
 const favoritesList = [];
 
