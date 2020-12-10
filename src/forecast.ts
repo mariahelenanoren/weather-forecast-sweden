@@ -12,6 +12,10 @@ function getChosenCity() {
     return chosenCityLS;
 }
 
+function setChosenCity() {
+    localStorage.setItem("chosenCity", JSON.stringify(chosenCity))
+}
+
 async function presentForecastData() {
     const chosenCityLS = getChosenCity()
     const data = await getForecast(chosenCityLS.lon, chosenCityLS.lat);

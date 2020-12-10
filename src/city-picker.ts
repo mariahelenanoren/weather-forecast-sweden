@@ -92,7 +92,7 @@ async function setCity() {
             chosenCity.lat = data[city].lat
         }
     }
-    localStorage.setItem("chosenCity", JSON.stringify(chosenCity))
+    setChosenCity()
 }
 
 function toggleDataList() {
