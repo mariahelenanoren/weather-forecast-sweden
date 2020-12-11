@@ -13,7 +13,7 @@ function addEventListeners() {
     const favorite = document.querySelector("#favorite")
     const stationPicker = document.querySelector("#station-btn")
 
-    favorite.addEventListener("click", addOrRemoveFavorite)
+    favorite.addEventListener("click",() => addOrRemoveFavorite(chosenCity.name))
 
     stationPicker.addEventListener("click", function() {
         setCity();

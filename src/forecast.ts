@@ -71,6 +71,7 @@ function presentForecastForToday(data) {
 
     presentCityName()
     presentExpTemp(temp, wind)
+    changeFavoriteSymbol()
 }
 
 function presentTemp(data) {
@@ -137,6 +138,13 @@ function presentAirPressure(data) {
     const airPressureData = data.values[0]
     const airPressure = Math.round(airPressureData)
     airPressureTarget.innerHTML = airPressure + " hPa"
+}
+
+function changeFavoriteSymbol() {
+    const cityName = chosenCity.name
+    if (checkIfFavorite(cityName)) {
+        document.querySelector("#favorite").innerHTML = "favorite"
+    }
 }
 
 function present30HForecast(data) {

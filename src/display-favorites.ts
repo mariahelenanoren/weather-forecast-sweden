@@ -19,11 +19,16 @@ async function displayFavorites() {
 
         const favSymbol = document.createElement("span")
         favSymbol.setAttribute("class", "material-icons favorite-symbol")
-        favSymbol.addEventListener("click", function() {
-            addOrRemoveFavorite(favoritesList[favorite].name)
-            favSymbol.parentElement.remove()
-        })
         favSymbol.innerHTML = "favorite"
+        favSymbol.addEventListener("click", function() {
+            const favSymbols = document.getElementsByClassName("favorite-symbol")
+            for (let i = 0; i < favSymbols.length; i++) {
+                if (favSymbol === favSymbols[i]) {
+                    addOrRemoveFavorite(favoritesList[i].name)
+                    favSymbol.parentElement.remove()
+                }
+            }
+        })
 
         const borderDiv = document.createElement("div")
         borderDiv.setAttribute("class", "border")
