@@ -7,22 +7,6 @@ async function getForecast(lon, lat) {
     }
 }
 
-function getChosenCity() {
-    const chosenCityLS = JSON.parse(localStorage.getItem("chosenCity"))
-    return chosenCityLS;
-}
-
-function setChosenCity() {
-    localStorage.setItem("chosenCity", JSON.stringify(chosenCity))
-}
-
-function loadLSIntoChosenCity() {
-    const chosenCityLS = getChosenCity()
-    chosenCity.name = chosenCityLS.name
-    chosenCity.lon = chosenCityLS.lon
-    chosenCity.lat = chosenCityLS.lat
-}
-
 async function presentForecastData() {
     const chosenCityLS = getChosenCity()
     const data = await getForecast(chosenCityLS.lon, chosenCityLS.lat);

@@ -1,17 +1,18 @@
 function cityPickerMain() {
-    setEventListeners();
+    loadLSIntoChosenCity();
     getSwedishCities();
+    setEventListeners();
 }
 
 
 function setEventListeners() {
     const cityInput = document.querySelector("#station")
 
-    cityInput.addEventListener("keyup", () => displayCitiesList(cityInput))
+    cityInput.addEventListener("keyup", () => getCitiesList(cityInput))
     cityInput.addEventListener("focus", () => {
         emptyInputField(cityInput);
         toggleDataList();
-        displayCitiesList(cityInput);
+        getCitiesList(cityInput);
     });
     cityInput.addEventListener("blur", () => setTimeout ( () => {
         toggleDataList();
@@ -24,16 +25,6 @@ async function getSwedishCities() {
         const data = await result.json()
         return data;
     } catch(error) {
-    }
-}
-
-async function getCitiesList() {
-    try {
-        const result = await fetch("https://opendata-download-metobs.smhi.se/api/version/1.0/parameter/1.json")
-        const data = await result.json();
-        return data;
-    } catch(error) {
-        console.error(error)
     }
 }
 
@@ -50,7 +41,14 @@ async function addCitiesToDataList() {
     }
 }
 
-async function displayCitiesList(input) {
+function loadLSIntoChosenCity() {
+    const chosenCityLS = getChosenCity()
+    chosenCity.name = chosenCityLS.name
+    chosenCity.lon = chosenCityLS.lon
+    chosenCity.lat = chosenCityLS.lat
+}
+
+async function getCitiesList(input) {
     const citiesList = await addCitiesToDataList();
     const inputValue = input.value
 
@@ -102,4 +100,13 @@ function toggleDataList() {
 
 function emptyInputField(input) {
     input.value = "";
+}
+
+function getChosenCity() {
+    const chosenCityLS = JSON.parse(localStorage.getItem("chosenCity"))
+    return chosenCityLS;
+}
+
+function setChosenCity() {
+    localStorage.setItem("chosenCity", JSON.stringify(chosenCity))
 }

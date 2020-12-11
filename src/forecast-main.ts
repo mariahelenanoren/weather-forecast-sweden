@@ -2,11 +2,10 @@ window.addEventListener("load", forecastMain);
 
 function forecastMain() {
     loadLSIntoFavoritesList();
-    loadLSIntoChosenCity();
     presentSun()
     presentForecastData();
-    cityPickerMain();
     addEventListeners();
+    cityPickerMain();
 }
 
 function addEventListeners() {
