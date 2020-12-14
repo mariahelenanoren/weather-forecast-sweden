@@ -21,6 +21,7 @@
 .favorite {
     align-self: end;
     margin: 0.5rem 0;
+    cursor: pointer;
     grid-area: favorite;
 }
 

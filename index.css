@@ -46,6 +46,7 @@
 .favorite-symbol {
     margin: 0;
     justify-self: end;
+    cursor: pointer;
     grid-area: fav-symbol;
 }
 
