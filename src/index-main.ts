@@ -5,6 +5,7 @@ function indexMain() {
     displayFavorites();
     cityPickerMain();
     addEventListenersIndex();
+    setBackgroundImage();
 }
 
 function addEventListenersIndex() {

@@ -6,6 +6,7 @@ function forecastMain() {
     presentForecastData();
     addEventListeners();
     cityPickerMain();
+    setBackgroundImage();
 }
 
 function addEventListeners() {
