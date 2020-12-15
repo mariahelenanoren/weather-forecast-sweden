@@ -101,11 +101,12 @@ function presentExpTemp(temp, wind) {
 
 function calculateExpTemp(tempData, windData) {
     let expTemp;
-    if (tempData < 10 && tempData > -40) {
+    console.log(tempData, windData)
+    if (tempData <= 10 && tempData >= -40 && windData >= 2 && windData <= 35) {
         expTemp = 13.12 + (0.6215 * tempData) - (13.956 * Math.pow(windData, 0.16)) + (0.48669 * tempData * Math.pow(windData, 0.16)) // Wind chill formula from SMHI
         expTemp = Math.round(expTemp) 
     } else {
-        expTemp = tempData;
+        expTemp = Math.round(tempData);
     }
     return expTemp;
 }

@@ -6,23 +6,31 @@ function cityPickerMain() {
 
 
 function setEventListeners() {
-    const cityInput = document.querySelector("#station")
+    const stationInput = document.querySelector("#station")
     const searchButton = document.querySelector("#station-btn")
 
     searchButton.addEventListener("click", function(event) {
         event.preventDefault()
-        transformSearchField()
+        //transformSearchField()
+        setCity();
+        search()
     })
 
-    cityInput.addEventListener("keyup", () => getCitiesList(cityInput))
-    cityInput.addEventListener("focus", () => {
-        emptyInputField(cityInput);
-        toggleDataList();
-        getCitiesList(cityInput);
+    stationInput.addEventListener("keydown", (event) => {
+        getCitiesList(stationInput, event)
     });
-    cityInput.addEventListener("blur", () => setTimeout ( () => {
+    stationInput.addEventListener("focus", (event) => {
+        emptyInputField(stationInput);
+        transformInputField(event)
+        getCitiesList(stationInput, event);
         toggleDataList();
-    }, 100))
+    });
+    stationInput.addEventListener("blur", (event) => {
+        setTimeout( function() {
+            toggleDataList();
+            transformInputField(event)
+        },100)
+    });
 }
 
 async function getSwedishCities() {
@@ -47,16 +55,53 @@ async function addCitiesToDataList() {
     }
 }
 
-function transformSearchField() {
+function search() {
+    const searchButton = document.querySelector("#station-btn")
     const inputField: HTMLInputElement = document.querySelector(".search input")
-    if (inputField.style.width === "10rem") {
+    if (inputField.value) {
+        window.location.href = "../forecast.html"
+    }
+}
+
+/*function transformSearchField() {
+    const inputField: HTMLInputElement = document.querySelector(".search input")
+    if (inputField.style.width === "15rem") {
         inputField.style.width = "0"
-        inputField.style.margin = "0"
         inputField.style.opacity = "0"
+        inputField.style.padding = "0"
     } else {
-        inputField.style.width = "10rem"
-        inputField.style.margin = "0 0.5rem"
+        inputField.style.width = "15rem"
         inputField.style.opacity = "1"
+        inputField.style.padding = "0 0.5rem"
+    }
+}*/
+
+/**
+ * For mobile only
+ * @param event 
+ */
+function transformInputField(event: Event) {
+    const inputField: HTMLInputElement = document.querySelector("#station")
+    const searchField: HTMLDivElement = document.querySelector(".search-field .search")
+    const searchButton: HTMLButtonElement = document.querySelector(".search button")
+    const dataList = document.querySelectorAll("#stations-list li")
+    if (event.type === "focus") {
+        searchField.style.borderRadius = "0.8rem 0.8rem 0 0"
+        searchField.style.backgroundColor = "white"
+        searchField.style.color = "black"
+        inputField.style.color = "black"
+        searchButton.style.color = "black"
+    } else if (event.type === "blur") {
+        searchField.style.borderRadius = "1.2rem"
+        searchField.style.backgroundColor = "rgba(255, 255, 255, 0.35)"
+        searchField.style.color = "white"
+        inputField.style.color = "white"
+        searchButton.style.color = "white"
+    } else if (event.type === "keydown" && dataList.length > 0) {
+        searchField.style.borderRadius = "0.8rem 0.8rem 0 0"
+    }
+    else if (event.type === "keydown" && dataList.length <= 0) {
+        searchField.style.borderRadius = "1.2rem"
     }
 }
 
@@ -69,14 +114,14 @@ function loadLSIntoChosenCity() {
     }
 }
 
-async function getCitiesList(input) {
+async function getCitiesList(input, event) {
     const citiesList = await addCitiesToDataList();
     const inputValue = input.value
 
-    showCitiesInDataList(inputValue, citiesList)
+    showCitiesInDataList(inputValue, citiesList, event)
 }
 
-function showCitiesInDataList(inputValue, citiesList) {
+function showCitiesInDataList(inputValue, citiesList, event) {
     const dataList = document.querySelector("#stations-list")
     emptyDataList(dataList);
 
@@ -88,6 +133,7 @@ function showCitiesInDataList(inputValue, citiesList) {
             li.addEventListener("click", () => presentCityInInput(li))
        }
    }
+   transformInputField(event);
 }
 
 function emptyDataList(dataList) {
@@ -95,17 +141,17 @@ function emptyDataList(dataList) {
 }
 
 function presentCityInInput(li) {
-    const cityInput: HTMLInputElement = document.querySelector("#station")
-    cityInput.value = li.innerHTML;
+    const stationInput: HTMLInputElement = document.querySelector("#station")
+    stationInput.value = li.innerHTML;
 }
 
 async function setCity() {
     const data = await getSwedishCities();
-    const cityInput: HTMLInputElement = document.querySelector("#station")
-    const cityName = cityInput.value
+    const stationInput: HTMLInputElement = document.querySelector("#station")
+    const cityName = stationInput.value
 
     for (let city in data) {
-        if (cityName === data[city].city) {
+        if (cityName.toLowerCase() === data[city].city.toLowerCase()) {
             chosenCity.name = data[city].city
             chosenCity.lon = data[city].lng
             chosenCity.lat = data[city].lat
