@@ -101,7 +101,6 @@ function presentExpTemp(temp, wind) {
 
 function calculateExpTemp(tempData, windData) {
     let expTemp;
-    console.log(tempData, windData)
     if (tempData <= 10 && tempData >= -40 && windData >= 2 && windData <= 35) {
         expTemp = 13.12 + (0.6215 * tempData) - (13.956 * Math.pow(windData, 0.16)) + (0.48669 * tempData * Math.pow(windData, 0.16)) // Wind chill formula from SMHI
         expTemp = Math.round(expTemp) 
@@ -140,7 +139,7 @@ function present30HForecast(data) {
 
     for (let i = 0; i < 31; i++) {
         /* Accounts for late data updates */
-        if (formatSingleDigitValues(hour) + ":00" === formatHour(hourData[i].validTime)) {
+        if (formatSingleDigitValues(hour - 1) + ":00" === formatHour(hourData[i].validTime)) {
             skipFirstHour = true;
         } else {
             const div = document.createElement("div")

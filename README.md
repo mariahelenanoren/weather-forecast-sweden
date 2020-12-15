@@ -4,9 +4,9 @@ Att göra:
  - (X) favoriter ska kunna tas bort även från index.html, då ska favoriter presenteras på nytt
  - bild ska ändras vid årstider
  - symboler ska ändras vid olika vädertillstånd
- - om inga favoriter finns ska vädret för Stockholm, Malmö, Göteborg och Umeå visas (?)
  - bryt isär forecast.ts
  - lägg till JSDOC
+ - hantera felaktiga söktermer
  - lägga till fritext som beskriver väderförhållandet just nu?
 
 
