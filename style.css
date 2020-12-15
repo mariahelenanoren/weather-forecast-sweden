@@ -69,6 +69,41 @@ header a:hover {
     z-index: 100;
 }
 
+.search {
+    border-radius: 3rem;
+    padding: 0.5rem;
+    height: fit-content;
+    background-color: rgba(255, 255, 255, 0.35);
+    color: white;
+}
+
+.search input {
+    width: 0;
+    margin: 0;
+    background-color: transparent;
+    border: none;
+    opacity: 0;
+    transition: width 0.2s ease-in-out, opacity 0.5s ease;
+}
+
+.search input::placeholder {
+    color: white;
+    font-weight: 300;
+}
+
+.search button {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+}
+
+.search button:focus {
+    outline: none;
+}
+
 /*--- FOOTER ---*/
 
 footer {

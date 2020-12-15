@@ -7,6 +7,12 @@ function cityPickerMain() {
 
 function setEventListeners() {
     const cityInput = document.querySelector("#station")
+    const searchButton = document.querySelector("#station-btn")
+
+    searchButton.addEventListener("click", function(event) {
+        event.preventDefault()
+        transformSearchField()
+    })
 
     cityInput.addEventListener("keyup", () => getCitiesList(cityInput))
     cityInput.addEventListener("focus", () => {
@@ -38,6 +44,19 @@ async function addCitiesToDataList() {
             citiesList.push(data[city].city)
         }
     return citiesList;
+    }
+}
+
+function transformSearchField() {
+    const inputField: HTMLInputElement = document.querySelector(".search input")
+    if (inputField.style.width === "10rem") {
+        inputField.style.width = "0"
+        inputField.style.margin = "0"
+        inputField.style.opacity = "0"
+    } else {
+        inputField.style.width = "10rem"
+        inputField.style.margin = "0 0.5rem"
+        inputField.style.opacity = "1"
     }
 }
 
