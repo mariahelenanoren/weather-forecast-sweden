@@ -43,9 +43,11 @@ async function addCitiesToDataList() {
 
 function loadLSIntoChosenCity() {
     const chosenCityLS = getChosenCity()
-    chosenCity.name = chosenCityLS.name
-    chosenCity.lon = chosenCityLS.lon
-    chosenCity.lat = chosenCityLS.lat
+    if (chosenCityLS) {
+        chosenCity.name = chosenCityLS.name
+        chosenCity.lon = chosenCityLS.lon
+        chosenCity.lat = chosenCityLS.lat   
+    }
 }
 
 async function getCitiesList(input) {
