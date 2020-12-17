@@ -42,18 +42,7 @@
         "capital": "admin", 
         "population": "164535", 
         "population_proper": "164535"
-    }, 
-    {
-        "city": "Uppsala", 
-        "lat": "59.8601", 
-        "lng": "17.6400", 
-        "country": "Sweden", 
-        "iso2": "SE", 
-        "admin_name": "Stockholm", 
-        "capital": "", 
-        "population": "133117", 
-        "population_proper": "127734"
-    }, 
+    },  
     {
         "city": "V\u00e4ster\u00e5s", 
         "lat": "59.6173", 

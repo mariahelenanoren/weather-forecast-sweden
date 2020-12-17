@@ -13,7 +13,7 @@ function setEventListeners() {
         event.preventDefault()
         //transformSearchField()
         setCity();
-        search()
+        search();
     })
 
     stationInput.addEventListener("keydown", (event) => {
@@ -56,13 +56,17 @@ async function addCitiesToDataList() {
 }
 
 function search() {
-    const searchButton = document.querySelector("#station-btn")
     const inputField: HTMLInputElement = document.querySelector(".search input")
     if (inputField.value) {
-        window.location.href = "../forecast.html"
+        goToForecast();
     }
 }
 
+function goToForecast() {
+    window.location.href = "../forecast.html"
+}
+
+/** MOBILE ONLY */
 /*function transformSearchField() {
     const inputField: HTMLInputElement = document.querySelector(".search input")
     if (inputField.style.width === "15rem") {
@@ -76,10 +80,6 @@ function search() {
     }
 }*/
 
-/**
- * For mobile only
- * @param event 
- */
 function transformInputField(event: Event) {
     const inputField: HTMLInputElement = document.querySelector("#station")
     const searchField: HTMLDivElement = document.querySelector(".search-field .search")

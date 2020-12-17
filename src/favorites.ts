@@ -9,7 +9,6 @@ function addOrRemoveFavorite(cityName) {
     const isFavorite = checkIfFavorite(cityName)
     if (isFavorite) {
         removeFavorite(cityName)
-        console.log("yes")
     } else {
         addFavorite()
     }
