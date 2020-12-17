@@ -130,7 +130,11 @@ function showCitiesInDataList(inputValue, citiesList, event) {
             const li = document.createElement("li")
             li.innerHTML = citiesList[city]
             dataList.append(li)
-            li.addEventListener("click", () => presentCityInInput(li))
+            li.addEventListener("click", () => {
+                presentCityInInput(li)
+                setCity()
+                goToForecast()
+            })
        }
    }
    transformInputField(event);
