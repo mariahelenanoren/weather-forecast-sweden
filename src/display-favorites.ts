@@ -46,7 +46,7 @@ async function displayFavorites() {
 
         const moreButton = document.createElement("a")
         moreButton.setAttribute("class", "more-button normal")
-        moreButton.setAttribute("href", "../forecast.html")
+        moreButton.setAttribute("href", "../city-forecast.html")
         moreButton.innerHTML = "Mer info"
 
         cityDiv.append(pCity, weatherSymbol)

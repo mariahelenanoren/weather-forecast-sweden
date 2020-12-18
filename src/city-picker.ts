@@ -63,7 +63,7 @@ function search() {
 }
 
 function goToForecast() {
-    window.location.href = "../forecast.html"
+    window.location.href = "../city-forecast.html"
 }
 
 /** MOBILE ONLY */

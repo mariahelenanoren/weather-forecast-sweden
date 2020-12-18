@@ -4,7 +4,7 @@ Att göra:
  - (X) favoriter ska kunna tas bort även från index.html, då ska favoriter presenteras på nytt
  - (X) bild ska ändras vid årstider
  - symboler ska ändras vid olika vädertillstånd
- - bryt isär forecast.ts
+ - (X) bryt isär forecast.ts
  - lägg till JSDOC
  - hantera felaktiga söktermer
  - lägga till fritext som beskriver väderförhållandet just nu?
