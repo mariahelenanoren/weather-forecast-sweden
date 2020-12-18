@@ -7,6 +7,7 @@ function forecastMain() {
     addEventListeners();
     cityPickerMain();
     setBackgroundImage();
+    parseSvenskaStader();
 }
 
 function addEventListeners() {
