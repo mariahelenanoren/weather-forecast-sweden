@@ -29,12 +29,13 @@
 .favorite {
     background-color: rgba(0, 0, 0, 0.35);
     padding: 1.5rem;
-    grid-template-columns: auto auto 1fr;
+    grid-template-columns: auto 1fr;
     grid-template-areas: 
-    "temp temp fav-symbol"
-    "border border border"
-    "city city city"
-    ". . more-button";
+    "temp fav-symbol"
+    "border border"
+    "city city"
+    "municipality municipality"
+    "more-button more-button";
 }
 
 .favorite-temp {
@@ -57,26 +58,25 @@
     grid-area: border;
 }
 
-.favorite-city {
-    width: 100%;
-    display: flex;
-    width: fit-content;
-    grid-area: city;
-}
-
 .city {
-    max-width: 60%;
-    width: 100%;
     display: flex;
-    align-self: center;
     width: fit-content;
     margin: 0;
     margin-right: 0.5rem;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    grid-area: city;
+}
+
+.municipality {
+    margin: 0.4rem 0 0 0;
+    font-size: 1rem;
+    color:rgb(182, 182, 182);
+    grid-area: municipality;
 }
 
 .weather-symbol {
-    margin: 0;
+    margin: 0 0 0 0.5rem;
+    grid-area: weather-symbol;
 }
 
 .more-button {

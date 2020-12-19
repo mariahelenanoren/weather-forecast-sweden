@@ -14,6 +14,7 @@
     grid-template-columns: auto 1fr;
     grid-template-areas: 
     "today . ."
+    "municipality . ."
     "city . favorite";
     border-bottom: white 0.2rem solid;
 }
@@ -35,8 +36,15 @@
     grid-area: city;
 }
 
+.municipality-name {
+    margin: 0.5rem 0 0 0;
+    font-size: 1.2rem;
+    color:rgb(182, 182, 182);
+    grid-area: municipality;
+}
+
 .city-name {
-    margin: 0.5rem 1rem 0.5rem 0;
+    margin: 0 1rem 0 0;
 }
 
 .city-name, .city-header span {

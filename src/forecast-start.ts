@@ -20,11 +20,9 @@ async function presentForecastData() {
 
 function presentCityName() {
     const cityTarget = document.querySelector("#name")
-    if (chosenCity.locality !== chosenCity.municipality) {
-        cityTarget.innerHTML = chosenCity.locality + ", " + chosenCity.municipality
-    } else {
-        cityTarget.innerHTML = chosenCity.locality
-    }
+    const municipalityTarget = document.querySelector("#municipality")
+    cityTarget.innerHTML = chosenCity.locality
+    municipalityTarget.innerHTML = chosenCity.municipality
 }
 
 function changeFavoriteSymbol() {

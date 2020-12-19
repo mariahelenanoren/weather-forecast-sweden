@@ -33,16 +33,13 @@ async function displayFavorites() {
         const borderDiv = document.createElement("div")
         borderDiv.setAttribute("class", "border")
 
-        const cityDiv = document.createElement("div")
-        cityDiv.setAttribute("class", "favorite-city")
-
         const pCity = document.createElement("p")
         pCity.setAttribute("class", "city")
-        if (favoritesList[favorite].locality !== favoritesList[favorite].municipality) {
-            pCity.innerHTML = favoritesList[favorite].locality + ", " + favoritesList[favorite].municipality
-        } else {
-            pCity.innerHTML = favoritesList[favorite].locality
-        }
+        pCity.innerHTML = favoritesList[favorite].locality
+
+        const pMunicipality = document.createElement("p")
+        pMunicipality.setAttribute("class", "municipality")
+        pMunicipality.innerHTML = favoritesList[favorite].municipality
 
         const weatherSymbol = document.createElement("span")
         weatherSymbol.setAttribute("class", "material-icons weather-symbol")
@@ -53,8 +50,8 @@ async function displayFavorites() {
         moreButton.setAttribute("href", "../city-forecast.html")
         moreButton.innerHTML = "Mer info"
 
-        cityDiv.append(pCity, weatherSymbol)
-        innerContainerDiv.append(pTemp, favSymbol, borderDiv, cityDiv, moreButton)
+        pCity.append(weatherSymbol)
+        innerContainerDiv.append(pTemp, favSymbol, borderDiv, pCity, pMunicipality, moreButton)
         container.append(innerContainerDiv)
     }
 
