@@ -7,13 +7,6 @@ function cityPickerMain() {
 
 function setEventListeners() {
     const stationInput = document.querySelector("#station")
-    const searchButton = document.querySelector("#station-btn")
-
-    searchButton.addEventListener("click", function(event) {
-        event.preventDefault()
-        //transformSearchField()
-        search();
-    })
 
     stationInput.addEventListener("keyup", (event) => {
         getCitiesList(stationInput, event)
@@ -87,7 +80,7 @@ function goToForecast() {
 function transformInputField(event: Event) {
     const inputField: HTMLInputElement = document.querySelector("#station")
     const searchField: HTMLDivElement = document.querySelector(".search-field .search")
-    const searchButton: HTMLButtonElement = document.querySelector(".search button")
+    const searchButton: HTMLButtonElement = document.querySelector(".search span")
     const dataList = document.querySelectorAll("#stations-list li")
     if (event.type === "focus") {
         searchField.style.borderRadius = "1.2rem"
@@ -112,9 +105,10 @@ function transformInputField(event: Event) {
 function loadLSIntoChosenCity() {
     const chosenCityLS = getChosenCity()
     if (chosenCityLS) {
-        chosenCity.name = chosenCityLS.name
-        chosenCity.lon = chosenCityLS.lon
-        chosenCity.lat = chosenCityLS.lat   
+        chosenCity.locality = chosenCityLS.locality
+        chosenCity.municipality = chosenCityLS.municipality
+        chosenCity.longitude = chosenCityLS.longitude
+        chosenCity.latitude = chosenCityLS.latitude   
     }
 }
 
@@ -160,13 +154,10 @@ function presentCityInInput(li) {
 
 async function setCity(index) {
 
-    if (cityArray[index].locality !== cityArray[index].municipality) {
-        chosenCity.name = cityArray[index].locality + ", " + cityArray[index].municipality
-    } else {
-        chosenCity.name = cityArray[index].locality
-    } 
-    chosenCity.lon = cityArray[index].longitude
-    chosenCity.lat = cityArray[index].latitude
+    chosenCity.locality = cityArray[index].locality
+    chosenCity.municipality = cityArray[index].municipality
+    chosenCity.longitude = cityArray[index].longitude
+    chosenCity.latitude = cityArray[index].latitude
 
     setChosenCity()
 }

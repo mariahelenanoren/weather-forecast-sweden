@@ -2,6 +2,7 @@ window.addEventListener("load", forecastMain);
 
 function forecastMain() {
     loadLSIntoFavoritesList();
+    loadLSIntoChosenCity()
     presentSun()
     presentForecastData();
     addEventListeners();
@@ -12,5 +13,5 @@ function forecastMain() {
 function addEventListeners() {
     const favorite = document.querySelector("#favorite")
 
-    favorite.addEventListener("click",() => addOrRemoveFavorite(chosenCity.name))
+    favorite.addEventListener("click",() => addOrRemoveFavorite(chosenCity.locality, chosenCity.municipality))
 }

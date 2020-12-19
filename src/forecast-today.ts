@@ -1,7 +1,6 @@
 function presentForecastForToday(data) {
     let todaysData;
     /* Accounts for late data updates */
-    console.log(data)
     if (formatHour(data.timeSeries[0].validTime) === hour + ":00") {
         todaysData = data.timeSeries[0]
     } else {

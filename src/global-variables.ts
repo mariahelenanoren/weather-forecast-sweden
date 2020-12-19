@@ -9,13 +9,15 @@ const cityArray = []
 const favoritesList = [];
 
 interface chosenCity {
-    name: String,
-    lon: String,
-    lat: String
+    locality: String,
+    municipality: String,
+    longitude: String,
+    latitude: String
 }
 
 const chosenCity = {
-    name: "",
-    lon: "",
-    lat: ""
+    locality: "",
+    municipality: "",
+    latitude: "",
+    longitude: "",
 }

@@ -2,7 +2,7 @@ async function displayFavorites() {
     const container = document.querySelector(".favorites-container")
 
     for (const favorite in favoritesList) {
-        let favoriteData = await getForecast(favoritesList[favorite].lon, favoritesList[favorite].lat)
+        let favoriteData = await getForecast(favoritesList[favorite].longitude, favoritesList[favorite].latitude)
         favoriteData = favoriteData.timeSeries[0]
 
         const innerContainerDiv = document.createElement("div")
@@ -24,7 +24,7 @@ async function displayFavorites() {
             const favSymbols = document.getElementsByClassName("favorite-symbol")
             for (let i = 0; i < favSymbols.length; i++) {
                 if (favSymbol === favSymbols[i]) {
-                    addOrRemoveFavorite(favoritesList[i].name)
+                    addOrRemoveFavorite(favoritesList[i].locality, favoritesList[i].municipality)
                     favSymbol.parentElement.remove()
                 }
             }
@@ -34,14 +34,18 @@ async function displayFavorites() {
         borderDiv.setAttribute("class", "border")
 
         const cityDiv = document.createElement("div")
-        cityDiv.setAttribute("class", "favorite-city flex center")
+        cityDiv.setAttribute("class", "favorite-city")
 
         const pCity = document.createElement("p")
         pCity.setAttribute("class", "city")
-        pCity.innerHTML = favoritesList[favorite].name
+        if (favoritesList[favorite].locality !== favoritesList[favorite].municipality) {
+            pCity.innerHTML = favoritesList[favorite].locality + ", " + favoritesList[favorite].municipality
+        } else {
+            pCity.innerHTML = favoritesList[favorite].locality
+        }
 
         const weatherSymbol = document.createElement("span")
-        weatherSymbol.setAttribute("class", "material-icons")
+        weatherSymbol.setAttribute("class", "material-icons weather-symbol")
         weatherSymbol.innerHTML = "brightness_7" // Change this to fit weather
 
         const moreButton = document.createElement("a")
@@ -66,9 +70,10 @@ async function displayFavorites() {
 
 async function presentFavoriteForecast(index) {
     if (index) {
-        chosenCity.name = favoritesList[index].name
-        chosenCity.lon = favoritesList[index].lon
-        chosenCity.lat = favoritesList[index].lat
+        chosenCity.locality = favoritesList[index].locality
+        chosenCity.municipality = favoritesList[index].municipality
+        chosenCity.longitude = favoritesList[index].longitude
+        chosenCity.latitude = favoritesList[index].latitude
         setChosenCity()
     }
 }

@@ -33,7 +33,8 @@
     grid-template-areas: 
     "temp temp fav-symbol"
     "border border border"
-    "city city more-button";
+    "city city city"
+    ". . more-button";
 }
 
 .favorite-temp {
@@ -57,22 +58,30 @@
 }
 
 .favorite-city {
+    width: 100%;
+    display: flex;
     width: fit-content;
     grid-area: city;
 }
 
 .city {
+    max-width: 60%;
+    width: 100%;
+    display: flex;
+    align-self: center;
+    width: fit-content;
     margin: 0;
     margin-right: 0.5rem;
     font-size: 1.1rem;
 }
 
-.city-symbol {
+.weather-symbol {
     margin: 0;
-    grid-area: symbol;
 }
 
 .more-button {
+    white-space: nowrap;
+    margin-left: 0.5rem;
     justify-self: end;
     align-self: end;
     background: none;

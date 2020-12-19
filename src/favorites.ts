@@ -5,19 +5,19 @@ function loadLSIntoFavoritesList() {
     }
 }
 
-function addOrRemoveFavorite(cityName) {
-    const isFavorite = checkIfFavorite(cityName)
+function addOrRemoveFavorite(locality, municipality) {
+    const isFavorite = checkIfFavorite(locality, municipality)
     if (isFavorite) {
-        removeFavorite(cityName)
+        removeFavorite(locality, municipality)
     } else {
         addFavorite()
     }
 }
 
-function checkIfFavorite(cityName):boolean {
+function checkIfFavorite(locality, municipality):boolean {
     let isFavorite = false;
     for (const favorite in favoritesList) {
-        if (cityName === favoritesList[favorite].name) {
+        if (locality === favoritesList[favorite].locality && municipality === favoritesList[favorite].municipality) {
             isFavorite = true;
         }
     }
@@ -34,10 +34,10 @@ async function addFavorite() {
     }
 }
 
-function removeFavorite(cityName) {
+function removeFavorite(locality, municipality) {
     const favSymbol = document.querySelector("#favorite")
     for (let i = 0; i < favoritesList.length; i++) {
-        if (cityName === favoritesList[i].name) {
+        if (locality === favoritesList[i].locality && municipality === favoritesList[i].municipality) {
             favoritesList.splice(i, 1)
             localStorage.setItem("favorites", JSON.stringify(favoritesList))
         }

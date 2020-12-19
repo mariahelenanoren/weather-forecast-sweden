@@ -9,7 +9,7 @@ async function getForecast(lon, lat) {
 
 async function presentForecastData() {
     const chosenCityLS = getChosenCity()
-    const data = await getForecast(chosenCityLS.lon, chosenCityLS.lat);
+    const data = await getForecast(chosenCity.longitude, chosenCity.latitude);
     
     presentCityName()
     changeFavoriteSymbol()
@@ -19,14 +19,16 @@ async function presentForecastData() {
 }
 
 function presentCityName() {
-    const chosenCityLS = getChosenCity()
     const cityTarget = document.querySelector("#name")
-    cityTarget.innerHTML = chosenCityLS.name;
+    if (chosenCity.locality !== chosenCity.municipality) {
+        cityTarget.innerHTML = chosenCity.locality + ", " + chosenCity.municipality
+    } else {
+        cityTarget.innerHTML = chosenCity.locality
+    }
 }
 
 function changeFavoriteSymbol() {
-    const cityName = chosenCity.name
-    if (checkIfFavorite(cityName)) {
+    if (checkIfFavorite(chosenCity.locality, chosenCity.municipality)) {
         document.querySelector("#favorite").innerHTML = "favorite"
     }
 }
