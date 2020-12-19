@@ -7,35 +7,6 @@ async function getForecast(lon, lat) {
     }
 }
 
-async function getSvenskaStader() {
-    try {
-        const result = await fetch("svenska-stader-master/src/svenska-stader.csv")
-        const data = await result.text()
-        return data;
-    } catch(error) {
-    }
-}
-
-async function parseSvenskaStader() {
-    const data = await getSvenskaStader();
-    const dataArray = data.split("\n")
-    const cityArray = []
-    for (const city in dataArray) {
-        const parameters = dataArray[city].split(",")
-        const cityObject = {
-            locality: parameters[0],
-            municipality: parameters[1],
-            county: parameters[2],
-            latitude: parameters[3],
-            longitude: parameters[4]
-        }
-        if (cityObject.locality !== "" && cityObject.locality !== "Locality") {
-            cityArray.push(cityObject)
-        }
-    }
-    console.log(cityArray)
-}
-
 async function presentForecastData() {
     const chosenCityLS = getChosenCity()
     const data = await getForecast(chosenCityLS.lon, chosenCityLS.lat);

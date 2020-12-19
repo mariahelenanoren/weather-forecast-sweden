@@ -4,6 +4,8 @@ const month = dateToday.getMonth();
 const date = dateToday.getDate();
 const hour = dateToday.getHours();
 
+const cityArray = []
+
 const favoritesList = [];
 
 interface chosenCity {

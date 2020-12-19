@@ -10,6 +10,7 @@ async function getSun(lon, lat) {
 async function presentSun() {
     const chosenCityLS = getChosenCity()
     const data = await getSun(chosenCityLS.lon, chosenCityLS.lat);
+    console.log(chosenCityLS.lon + " " + chosenCityLS.lat)
     const sunrise = data.sunrise;
     const sunset = data.sunset;
     const formattedSunset = formatSun(sunset)
