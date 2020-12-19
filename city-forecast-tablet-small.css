@@ -1,0 +1,22 @@
+/* TABLET SMALL */
+/* max-width: 768px */
+
+/* Main forecast */
+
+.main-forecast {
+    padding: 3rem 10%;
+}
+
+/* Main forecast data */
+
+.main-data {
+    row-gap: 0.5rem;
+    padding: 1rem 0 1rem 0;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+    "temp sunup sundown visibility"
+    "temp humidity exp-temp wind"
+    "temp air-pressure . ."
+    "temp weather-condition weather-condition weather-condition"
+    ;
+}

@@ -1,0 +1,39 @@
+/* TABLET LARGE */
+/* max-width: 1024px */
+
+/* Main forecast */
+
+.main-forecast {
+    padding: 3rem 10%;
+}
+
+/* Main forecast data */
+
+.temp {
+    font-size: 6rem;
+}
+
+.sunup, .sundown, .visibility, .humidity, .exp-temp, .wind, .air-pressure {
+    font-size: 1.6rem;
+}
+
+.weather-condition {
+    font-size: 1.6rem;
+}
+
+/* Hourly forecast */
+
+.hourly-forecast {
+    width: 100%;
+    padding: 1.5rem 10%;
+}
+
+/* Weekly forecast */
+
+.weekly-forecast {
+    padding: 2rem 10%;
+}
+
+.day-container {
+    padding: 0 1rem;
+}

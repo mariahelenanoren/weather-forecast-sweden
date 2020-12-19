@@ -1,0 +1,41 @@
+/* MOBILE */
+/* max-width: 480px */
+
+/* Main forecast */
+
+.main-forecast {
+    padding: 3rem 2rem;
+}
+
+/* Main forecast data */
+
+.main-data {
+    row-gap: 0.5rem;
+    padding: 1rem 0 1rem 0;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 
+    "temp ." 
+    "sunup sundown"
+    "visibility humidity"
+    "exp-temp wind" 
+    "air-pressure ."
+    "weather-condition weather-condition"
+    ;
+}
+
+/* Hourly forecast */
+
+.hourly-forecast {
+    width: 100%;
+    padding: 1.5rem 2rem;
+}
+
+/* Weekly forecast */
+
+.weekly-forecast {
+    padding: 2rem 0;
+}
+
+.day-container {
+    padding: 0 2rem;
+}

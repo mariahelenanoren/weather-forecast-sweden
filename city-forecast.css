@@ -26,12 +26,6 @@
     grid-area: favorite;
 }
 
-.today {
-    font-size: 1rem;
-    margin: 0;
-    grid-area: today;
-}
-
 .city {
     grid-area: city;
 }
@@ -81,38 +75,35 @@
     margin: 0;
 }
 
-.sunup {
+.temp, .sunup, .sundown, .visibility, .humidity, .exp-temp, .wind, .air-pressure {
     font-size: 2rem;
+}
+
+.sunup {
     grid-area: sunup;
 }
 
 .sundown {
-    font-size: 2rem;
     grid-area: sundown;
 }
 
 .visibility {
-    font-size: 2rem;
     grid-area: visibility;
 }
 
 .humidity {
-    font-size: 2rem;
     grid-area: humidity;
 }
 
 .exp-temp {
-    font-size: 2rem;
     grid-area: exp-temp;
 }
 
 .wind {
-    font-size: 2rem;
     grid-area: wind;
 }
 
 .air-pressure {
-    font-size: 2rem;
     grid-area: air-pressure;
 }
 
