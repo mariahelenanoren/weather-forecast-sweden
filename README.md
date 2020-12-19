@@ -6,8 +6,8 @@ Att göra:
  - symboler ska ändras vid olika vädertillstånd
  - (X) bryt isär forecast.ts
  - lägg till JSDOC
- - hantera felaktiga söktermer
- - lägga till fritext som beskriver väderförhållandet just nu?
+ - (X)hantera felaktiga söktermer (användaren kan inte längre frisöka)
+ - lägga till fritext som beskriver väderförhållandet just nu
 
 
  Lista över väderförhållanden: (+ solupp/solned?)

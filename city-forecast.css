@@ -3,7 +3,7 @@
 .main-forecast {
     width: 100%;
     height: auto;
-    padding: 4rem 15%;
+    padding: 3rem 15%;
 }
 
 /* City header */
@@ -60,6 +60,7 @@
     grid-template-areas: 
     "temp sunup sundown visibility humidity"
     "temp exp-temp wind air-pressure ."
+    ". weather-condition weather-condition weather-condition weather-condition"
     ;
 }
 
@@ -77,36 +78,48 @@
 }
 
 .main-data div p {
-    font-size: 2rem;
     margin: 0;
 }
 
 .sunup {
+    font-size: 2rem;
     grid-area: sunup;
 }
 
 .sundown {
+    font-size: 2rem;
     grid-area: sundown;
 }
 
 .visibility {
+    font-size: 2rem;
     grid-area: visibility;
 }
 
 .humidity {
+    font-size: 2rem;
     grid-area: humidity;
 }
 
 .exp-temp {
+    font-size: 2rem;
     grid-area: exp-temp;
 }
 
 .wind {
+    font-size: 2rem;
     grid-area: wind;
 }
 
 .air-pressure {
+    font-size: 2rem;
     grid-area: air-pressure;
+}
+
+.weather-condition {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    grid-area: weather-condition;
 }
 
 /* Hourly forecast */
