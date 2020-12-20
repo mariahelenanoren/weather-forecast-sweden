@@ -22,6 +22,7 @@ function setEventListeners() {
     stationInput.addEventListener("blur", (event) => {
         setTimeout( function() {
             toggleDataList();
+            changeSearchFieldState(event)
             transformInputField(event)
         },100)
     });
@@ -67,7 +68,7 @@ function goToForecast() {
 }
 
 function changeSearchFieldState(event: Event) {
-    if (event.type === "load" || event.type === "resize") {
+    if (event.type === "load" || event.type === "resize" || event.type === "blur") {
         isSearchFieldOpen = false;
     } else if (event.type === "click") {
         if (isSearchFieldOpen === false) {
@@ -92,6 +93,7 @@ function transformSearchField(isSearchFieldOpen: boolean) {
         inputField.style.width = "100%";
         inputField.style.margin = "0 0 0 0.5rem";
         inputField.style.opacity = "100%";
+        inputField.focus();
     } else if (!isSearchFieldOpen && window.innerWidth <= 480){
         headerNav.style.opacity = "100%";
         headerNav.style.width = "10rem"
@@ -99,6 +101,7 @@ function transformSearchField(isSearchFieldOpen: boolean) {
         inputField.style.width = "0%";
         inputField.style.margin = "0";
         inputField.style.opacity = "0%";
+        inputField.blur()
     } else if (!isSearchFieldOpen && window.innerWidth > 480) {
         headerNav.style.opacity = "100%";
         headerNav.style.width = "8rem"
@@ -106,6 +109,7 @@ function transformSearchField(isSearchFieldOpen: boolean) {
         inputField.style.width = "100%";
         inputField.style.margin = "0 0 0 0.5rem";
         inputField.style.opacity = "100%";
+        inputField.blur()
     }
 }
 

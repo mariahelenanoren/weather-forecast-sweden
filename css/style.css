@@ -46,10 +46,6 @@ header {
     padding: 0 var(--padding-desktop);
 }
 
-header nav {
-    transition: opacity 0.5s ease-in-out, width 0.5s ease-in-out;
-}
-
 h1 {
     font-size: 1rem;
     margin-right: 4rem;
@@ -90,7 +86,6 @@ header a:hover {
     font-weight: 400;
     background-color: transparent;
     border: none;
-    transition: width 0.2s ease-in-out, opacity 0.5s ease, padding 0.2s ease;
 }
 
 .search input::placeholder {

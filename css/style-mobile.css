@@ -5,15 +5,19 @@ header {
     padding: 0 var(--padding-mobile);
 }
 
+header nav {
+    transition: opacity 0.2s ease-in-out, width 0.2s ease-in-out;
+}
+
 .search-field {
     width: 2.4rem;
-    transition: width 0.5s ease-in-out;
+    transition: width 0.2s ease-in-out;
 }
 
 .search input {
     width: 0;
     margin: 0;
-    transition: margin 0.5s ease-in-out;
+    transition: margin 0.2s ease-in-out, width 0.2s ease-in-out, opacity 0.2s ease, padding 0.2s ease;
 }
 
 .stations-list {
