@@ -62,9 +62,12 @@
     display: flex;
     width: fit-content;
     margin: 0;
-    margin-right: 0.5rem;
     font-size: 1.2rem;
     grid-area: city;
+}
+
+.city i {
+    margin-left: 0.5rem;
 }
 
 .municipality {
@@ -72,11 +75,6 @@
     font-size: 1rem;
     color:rgb(182, 182, 182);
     grid-area: municipality;
-}
-
-.weather-symbol {
-    margin: 0 0 0 0.5rem;
-    grid-area: weather-symbol;
 }
 
 .more-button {

@@ -10,12 +10,6 @@ async function displayFavorites() {
 
         const pTemp = document.createElement("p")
         pTemp.setAttribute("class", "favorite-temp normal")
-        /* Accounts for irregularities in parameter index */
-        for (const parameter in favoriteData.parameters) {
-            if(favoriteData.parameters[parameter].name === "t") {
-                pTemp.innerHTML = formatDataWithCel(favoriteData.parameters[parameter].values[0])
-            }
-        }
 
         const favSymbol = document.createElement("span")
         favSymbol.setAttribute("class", "material-icons favorite-symbol")
@@ -41,16 +35,27 @@ async function displayFavorites() {
         pMunicipality.setAttribute("class", "municipality")
         pMunicipality.innerHTML = favoritesList[favorite].municipality
 
-        const weatherSymbol = document.createElement("span")
-        weatherSymbol.setAttribute("class", "material-icons weather-symbol")
-        weatherSymbol.innerHTML = "brightness_7" // Change this to fit weather
+        const weatherIcon = document.createElement("i")
+        weatherIcon.setAttribute("class", "wi")
 
         const moreButton = document.createElement("a")
         moreButton.setAttribute("class", "more-button normal")
         moreButton.setAttribute("href", "../city-forecast.html")
         moreButton.innerHTML = "Mer info"
 
-        pCity.append(weatherSymbol)
+        /* Accounts for irregularities in parameter index */
+        for (const parameter in favoriteData.parameters) {
+            if(favoriteData.parameters[parameter].name === "t") {
+                pTemp.innerHTML = formatDataWithCel(favoriteData.parameters[parameter].values[0])
+            }
+            if(favoriteData.parameters[parameter].name === "Wsymb2") {
+                const icon = getWeatherIcon(favoriteData.parameters[parameter].values[0])
+                console.log(icon)
+                weatherIcon.classList.add(icon)
+            }
+        }
+
+        pCity.append(weatherIcon)
         innerContainerDiv.append(pTemp, favSymbol, borderDiv, pCity, pMunicipality, moreButton)
         container.append(innerContainerDiv)
     }
