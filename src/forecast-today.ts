@@ -101,12 +101,10 @@ function presentWeatherCondition(data) {
 function presentWeatherIcon(data) {
     const iconTarget = document.querySelector("#weather-icon")
     const weatherIcon = getWeatherIcon(data.values[0])
-    console.log(weatherIcon)
     iconTarget.classList.add(weatherIcon)  
 }
 
 function getWeatherCondition(value: number): string {
-    console.log(value)
     switch (value) {
         case 1: return "klar himmel"
         case 2: return "nästan klar himmel"

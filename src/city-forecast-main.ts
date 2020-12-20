@@ -1,6 +1,6 @@
-window.addEventListener("load", forecastMain);
+window.addEventListener("load", (event) => forecastMain(event));
 
-function forecastMain() {
+function forecastMain(event: Event) {
     loadLSIntoFavoritesList();
     loadLSIntoChosenCity()
     presentSun()
@@ -8,6 +8,7 @@ function forecastMain() {
     addEventListeners();
     cityPickerMain();
     setBackgroundImage();
+    changeSearchFieldState(event)
 }
 
 function addEventListeners() {

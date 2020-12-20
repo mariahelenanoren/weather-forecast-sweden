@@ -26,7 +26,6 @@ function formatSingleDigitValues(data) {
 }
 
 function getWeatherIcon(value: number): string {
-    console.log(value)
     switch (value) {
         case 1: return "wi-day-sunny"
         case 2: return "wi-day-cloudy"

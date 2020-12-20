@@ -7,6 +7,7 @@
 
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/style-tablet.css" media="screen and (max-width: 768px)">
+    <link rel="stylesheet" href="./css/style-mobile.css" media="screen and (max-width: 480px)">
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/index-large.css" media="screen and (max-width: 1024px)">
     <link rel="stylesheet" href="./css/weather-icons.css">
@@ -31,14 +32,14 @@
             <img class="background-img">
 
             <header class="flex align-center justify-space-between">
-                <nav class="flex row align-center">
+                <nav class="flex row align-center" id="header-nav">
                     <h1 class="semi-bold">Väder</h1>
                     <a class="normal active" href="./index.html">Hem</a>
                 </nav>
                 <div class="search-field">
                     <form class="search flex row align-center justify-space-between">
                         <input class="flex align-center" list="stations" name="station" id="station" placeholder="Sök efter stad..." autocomplete="off">
-                        <span class="material-icons">
+                        <span class="material-icons" id="search-icon">
                             search
                         </span>
                     </form>

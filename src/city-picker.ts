@@ -6,8 +6,10 @@ function cityPickerMain() {
 
 
 function setEventListeners() {
+    const searchIcon = document.querySelector("#search-icon")
     const stationInput = document.querySelector("#station")
 
+    searchIcon.addEventListener("click",(event) => changeSearchFieldState(event))
     stationInput.addEventListener("keyup", (event) => {
         getCitiesList(stationInput, event)
     });
@@ -23,6 +25,7 @@ function setEventListeners() {
             transformInputField(event)
         },100)
     });
+    window.addEventListener("resize", (event) => changeSearchFieldState(event))
 }
 
 async function getSvenskaStader() {
@@ -63,19 +66,48 @@ function goToForecast() {
     window.location.href = "../city-forecast.html"
 }
 
-/** MOBILE ONLY */
-/*function transformSearchField() {
-    const inputField: HTMLInputElement = document.querySelector(".search input")
-    if (inputField.style.width === "15rem") {
-        inputField.style.width = "0"
-        inputField.style.opacity = "0"
-        inputField.style.padding = "0"
-    } else {
-        inputField.style.width = "15rem"
-        inputField.style.opacity = "1"
-        inputField.style.padding = "0 0.5rem"
+function changeSearchFieldState(event: Event) {
+    if (event.type === "load" || event.type === "resize") {
+        isSearchFieldOpen = false;
+    } else if (event.type === "click") {
+        if (isSearchFieldOpen === false) {
+            isSearchFieldOpen = true;
+        } else if (isSearchFieldOpen === true) {
+            isSearchFieldOpen = false;
+        }
     }
-}*/
+    transformSearchField(isSearchFieldOpen)
+}
+
+/** MOBILE ONLY */
+function transformSearchField(isSearchFieldOpen: boolean) {
+    console.log(isSearchFieldOpen)
+    const inputField: HTMLInputElement = document.querySelector(".search input")
+    const searchField: HTMLInputElement = document.querySelector(".search-field")
+    const headerNav: HTMLDivElement = document.querySelector("#header-nav")
+    if (isSearchFieldOpen && window.innerWidth <= 480) {
+        headerNav.style.opacity = "0%";
+        headerNav.style.width = "0%"
+        searchField.style.width = "100%";
+        inputField.style.width = "100%";
+        inputField.style.margin = "0 0 0 0.5rem";
+        inputField.style.opacity = "100%";
+    } else if (!isSearchFieldOpen && window.innerWidth <= 480){
+        headerNav.style.opacity = "100%";
+        headerNav.style.width = "10rem"
+        searchField.style.width = "2.4rem";
+        inputField.style.width = "0%";
+        inputField.style.margin = "0";
+        inputField.style.opacity = "0%";
+    } else if (!isSearchFieldOpen && window.innerWidth > 480) {
+        headerNav.style.opacity = "100%";
+        headerNav.style.width = "8rem"
+        searchField.style.width = "15rem";
+        inputField.style.width = "100%";
+        inputField.style.margin = "0 0 0 0.5rem";
+        inputField.style.opacity = "100%";
+    }
+}
 
 function transformInputField(event: Event) {
     const inputField: HTMLInputElement = document.querySelector("#station")

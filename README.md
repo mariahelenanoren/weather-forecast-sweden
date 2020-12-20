@@ -8,6 +8,8 @@ Att göra:
  - lägg till JSDOC
  - (X) hantera felaktiga söktermer (användaren kan inte längre frisöka)
  - (X) lägga till fritext som beskriver väderförhållandet just nu
+ - skapa CSS variabler
+ - lägga till procent chans för nederbörd(?)
 
 
  Lista över väderförhållanden: (+ solupp/solned?)

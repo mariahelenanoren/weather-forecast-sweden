@@ -8,6 +8,8 @@ const cityArray = []
 
 const favoritesList = [];
 
+let isSearchFieldOpen: boolean;
+
 interface chosenCity {
     locality: String,
     municipality: String,
