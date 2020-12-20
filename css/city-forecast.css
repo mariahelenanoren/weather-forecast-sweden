@@ -38,11 +38,15 @@
 }
 
 .city-name {
-    margin: 0 1rem 0 0;
+    margin: 0.5rem 1rem 0 0;
 }
 
 .city-name, .city-header span {
     font-size: 2rem;
+}
+
+.city-header i {
+    font-size: 1.8rem;
 }
 
 /* Main forecast data */
@@ -75,7 +79,7 @@
     margin: 0;
 }
 
-.temp, .sunup, .sundown, .visibility, .humidity, .exp-temp, .wind, .air-pressure {
+.sunup, .sundown, .visibility, .humidity, .exp-temp, .wind, .air-pressure {
     font-size: 2rem;
 }
 
@@ -108,7 +112,7 @@
 }
 
 .weather-condition {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin-top: 1rem;
     grid-area: weather-condition;
 }

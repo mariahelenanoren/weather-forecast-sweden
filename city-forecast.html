@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Väder</title>
 
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./style-tablet.css" media="screen and (max-width: 768px)">
-    <link rel="stylesheet" href="./city-forecast.css">
-    <link rel="stylesheet" href="./city-forecast-tablet-large.css" media="screen and (max-width: 1024px)">
-    <link rel="stylesheet" href="./city-forecast-tablet-small.css" media="screen and (max-width: 768px)">
-    <link rel="stylesheet" href="./city-forecast-mobile.css" media="screen and (max-width: 480px)">
-    <link rel="stylesheet" href="./reusable-classes.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style-tablet.css" media="screen and (max-width: 768px)">
+    <link rel="stylesheet" href="./css/city-forecast.css">
+    <link rel="stylesheet" href="./css/city-forecast-tablet-large.css" media="screen and (max-width: 1024px)">
+    <link rel="stylesheet" href="./css/city-forecast-tablet-small.css" media="screen and (max-width: 768px)">
+    <link rel="stylesheet" href="./css/city-forecast-mobile.css" media="screen and (max-width: 480px)">
+    <link rel="stylesheet" href="./css/weather-icons.css">
+    <link rel="stylesheet" href="./css/reusable-classes.css">
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
@@ -54,9 +55,7 @@
                     <p class="municipality-name semi-bold" id="municipality"></p> <!-- JS CODE FOR THIS -->
                     <div class="city flex center">
                         <p class="city-name semi-bold" id="name"></p> <!-- JS CODE FOR THIS -->
-                        <span class="material-icons" id="city-w-icon">
-                            brightness_7 <!-- JS CODE FOR THIS -->
-                        </span>
+                        <i class="wi" id="weather-icon"></i>
                     </div>
                     <span class="favorite material-icons" id="favorite">
                         favorite_border

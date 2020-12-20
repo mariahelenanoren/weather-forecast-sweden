@@ -33,6 +33,7 @@ function presentForecastForToday(data) {
                 ;break
             case "Wsymb2":
                 presentWeatherCondition(parameters[parameter])
+                presentWeatherIcon(parameters[parameter]);
             ;break
             default:
                 break;
@@ -94,8 +95,14 @@ function presentAirPressure(data) {
 function presentWeatherCondition(data) {
     const weatherTarget = document.querySelector("#weather-condition")
     const weatherCondition = getWeatherCondition(data.values[0])
-    weatherTarget.innerHTML = "Just nu: " + weatherCondition
-    
+    weatherTarget.innerHTML = "Just nu: " + weatherCondition   
+}
+
+function presentWeatherIcon(data) {
+    const iconTarget = document.querySelector("#weather-icon")
+    const weatherIcon = getWeatherIcon(data.values[0])
+    console.log(weatherIcon)
+    iconTarget.classList.add(weatherIcon)  
 }
 
 function getWeatherCondition(value: number): string {
@@ -113,20 +120,53 @@ function getWeatherCondition(value: number): string {
         case 10: return "kraftig regnskur"
         case 11: return "åskväder"
         case 12: return "lätt skur av snörblandat regn"
-        case 13: return "medelmåttig skur av snörblandat regn"
+        case 13: return "måttlig skur av snörblandat regn"
         case 14: return "kraftig skur av snörblandat regn"
         case 15: return "lätt snöby"
         case 16: return "måttlig snöby"
         case 17: return "kraftig snöby"
         case 18: return "lätt regn"
-        case 19: return "medelmåttigt regn"
+        case 19: return "måttligt regn"
         case 20: return "kraftigt regn"
         case 21: return "åska"
         case 22: return "lätt snöblandat regn"
-        case 23: return "medelmåttigt snöblandat regn"
+        case 23: return "måttligt snöblandat regn"
         case 24: return "kraftigt snöblandat regn"
         case 25: return "lätt snöfall"
-        case 26: return "medelmåttigt snöfall"
+        case 26: return "måttligt snöfall"
         case 27: return "kraftigt snöfall"
+    }
+}
+
+ function getWeatherIcon(value: number): string {
+    console.log(value)
+    switch (value) {
+        case 1: return "wi-day-sunny"
+        case 2: return "wi-day-cloudy"
+        case 3: return "wi-day-cloudy"
+        case 4: return "wi-day-cloudy"
+        case 5: return "wi-day-cloudy"
+        case 6: return "wi-day-cloudy"
+        case 7: return "wi-fog"
+        case 8: return "wi-showers"
+        case 9: return "wi-rain"
+        case 10: return "wi-rain"
+        case 11: return "wi-lightning"
+        case 12: return "wi-sleet"
+        case 13: return "wi-sleet"
+        case 14: return "wi-sleet"
+        case 15: return "wi-snow"
+        case 16: return "wi-snow"
+        case 17: return "wi-snow"
+        case 18: return "wi-showers"
+        case 19: return "wi-rain"
+        case 20: return "wi-rain"
+        case 21: return "åska"
+        case 22: return "wi-sleet"
+        case 23: return "wi-sleet"
+        case 24: return "wi-sleet"
+        case 25: return "wi-snow"
+        case 26: return "wi-snow"
+        case 27: return "wi-snow"
     }
 }
