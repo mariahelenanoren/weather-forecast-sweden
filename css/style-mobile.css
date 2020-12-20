@@ -2,7 +2,7 @@
 
 header {
     height: 5rem;
-    padding: 0 2rem;
+    padding: 0 var(--padding-mobile);
 }
 
 .search-field {
@@ -17,5 +17,5 @@ header {
 }
 
 .stations-list {
-    width: calc(100% - 4rem); 
+    width: calc(100% - 2 * var(--padding-mobile)); 
 }

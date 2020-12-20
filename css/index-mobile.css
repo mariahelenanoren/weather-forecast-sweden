@@ -1,0 +1,15 @@
+/* Welcome section */
+
+.welcome-section {
+    padding: 10rem var(--padding-mobile) 3rem var(--padding-mobile);
+}
+
+/* Favorites */
+
+.favorites-container {
+    padding: 0 0;
+}
+
+.favorite {
+    padding: 1.5rem var(--padding-mobile)
+}

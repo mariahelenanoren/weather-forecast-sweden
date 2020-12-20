@@ -1,7 +1,7 @@
 /* Welcome section */
 
 .welcome-section {
-    padding: 10rem 15% 3rem 15%;
+    padding: 10rem var(--padding-desktop) 3rem var(--padding-desktop);
 }
 
 .welcome-today {
@@ -20,7 +20,7 @@
 .favorites-container {
    width: 100%;
    height: auto;
-   padding: 0 15%;
+   padding: 0 var(--padding-desktop);
    column-gap: 0.5rem;
    row-gap: 0.5rem;
    grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
@@ -34,14 +34,13 @@
     "temp fav-symbol"
     "border border"
     "city city"
-    "municipality municipality"
-    "more-button more-button";
+    "municipality more-button"
+    ;
 }
 
 .favorite-temp {
     font-size: 4rem;
     margin: 0;
-    margin-top: 1rem;
     grid-area: temp;
 }
 

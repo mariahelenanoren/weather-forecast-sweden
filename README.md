@@ -5,11 +5,11 @@ Att göra:
  - (X) bild ska ändras vid årstider
  - symboler ska ändras vid olika vädertillstånd
  - (X) bryt isär forecast.ts
- - lägg till JSDOC
  - (X) hantera felaktiga söktermer (användaren kan inte längre frisöka)
  - (X) lägga till fritext som beskriver väderförhållandet just nu
- - skapa CSS variabler
+ - (X) skapa CSS variabler
  - lägga till procent chans för nederbörd(?)
+ - lägga till JSDOC
 
 
  Lista över väderförhållanden: (+ solupp/solned?)

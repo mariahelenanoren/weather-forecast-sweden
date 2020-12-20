@@ -43,7 +43,7 @@ header {
     position: relative;
     height: 4rem;
     width: 100%;
-    padding: 0 15%;
+    padding: 0 var(--padding-desktop);
 }
 
 header nav {
@@ -120,7 +120,7 @@ header a:hover {
 }
 
 .stations-list {
-    width: 15rem;
+    width: var(--search-bar-width);
     height: auto;
     max-height: 12rem;
     overflow-y: scroll;

@@ -4,7 +4,7 @@
 /* Main forecast */
 
 .main-forecast {
-    padding: 3rem 10%;
+    padding: 3rem var(--padding-tablet);
 }
 
 /* Main forecast data */
@@ -25,13 +25,13 @@
 
 .hourly-forecast {
     width: 100%;
-    padding: 1.5rem 10%;
+    padding: 1.5rem var(--padding-tablet);
 }
 
 /* Weekly forecast */
 
 .weekly-forecast {
-    padding: 2rem 10%;
+    padding: 2rem var(--padding-tablet);
 }
 
 .day-container {

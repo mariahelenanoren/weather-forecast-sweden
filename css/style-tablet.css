@@ -5,7 +5,7 @@
 
 header {
     height: 5rem;
-    padding: 0 10%;
+    padding: 0 var(--padding-tablet);
 }
 
 h1 {

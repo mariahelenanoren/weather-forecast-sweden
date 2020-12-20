@@ -1,0 +1,11 @@
+/* Welcome section */
+
+.welcome-section {
+    padding: 10rem var(--padding-tablet) 3rem var(--padding-tablet);
+}
+
+/* Favorites */
+
+.favorites-container {
+    padding: 0 var(--padding-tablet);
+}

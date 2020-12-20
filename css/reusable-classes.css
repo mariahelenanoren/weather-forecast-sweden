@@ -1,3 +1,12 @@
+/* CSS VARIABLES */
+
+:root {
+    --search-bar-width: 15rem;
+    --padding-desktop: 15%;
+    --padding-tablet: 10%;
+    --padding-mobile: 8%;
+}
+
 /* REUSABLE CLASSES */
 
 .flex {

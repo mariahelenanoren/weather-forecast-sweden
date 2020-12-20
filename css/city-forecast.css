@@ -3,7 +3,7 @@
 .main-forecast {
     width: 100%;
     height: auto;
-    padding: 3rem 15%;
+    padding: 3rem var(--padding-desktop);
 }
 
 /* City header */
@@ -122,7 +122,7 @@
 .hourly-forecast {
     width: 100%;
     height: auto;
-    padding: 1.5rem 15%;
+    padding: 1.5rem var(--padding-desktop);
 
     /* Hide scrollbar for IE, Edge and Firefox */
     -ms-overflow-style: none;  /* IE and Edge */
@@ -153,7 +153,7 @@
 /* Weekly forecast */
 
 .weekly-forecast {
-    padding: 2rem 15%;
+    padding: 2rem var(--padding-desktop);
 }
 
 .day-container {

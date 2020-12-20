@@ -102,7 +102,7 @@ function transformSearchField(isSearchFieldOpen: boolean) {
     } else if (!isSearchFieldOpen && window.innerWidth > 480) {
         headerNav.style.opacity = "100%";
         headerNav.style.width = "8rem"
-        searchField.style.width = "15rem";
+        searchField.style.width = "var(--search-bar-width)";
         inputField.style.width = "100%";
         inputField.style.margin = "0 0 0 0.5rem";
         inputField.style.opacity = "100%";
