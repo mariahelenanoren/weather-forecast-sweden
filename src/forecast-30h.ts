@@ -21,9 +21,8 @@ function present30HForecast(data) {
                 pTime.innerHTML = formatHour(hourData[i].validTime)
             }
     
-            const span = document.createElement("span")
-            span.setAttribute("class", "material-icons")
-            span.innerHTML = "brightness_2" // Change this to fit weather
+            const weatherIcon = document.createElement("i")
+            weatherIcon.setAttribute("class", "wi")
     
             const pTemp = document.createElement("p")
             pTemp.setAttribute("class", "hour-temp normal")
@@ -32,9 +31,13 @@ function present30HForecast(data) {
                 if (hourData[i].parameters[parameter].name === "t") {
                     pTemp.innerHTML = formatDataWithCel(hourData[i].parameters[parameter].values[0])
                 }
+                else if (hourData[i].parameters[parameter].name === "Wsymb2") {
+                    const icon = getWeatherIcon(hourData[i].parameters[parameter].values[0])
+                    weatherIcon.classList.add(icon)
+                }
             }
     
-            div.append(pTime, span, pTemp)
+            div.append(pTime, weatherIcon, pTemp)
             container.append(div)
         }
     }

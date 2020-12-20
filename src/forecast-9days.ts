@@ -22,18 +22,20 @@ function present9DayForecast(data) {
                 div.setAttribute("class", "flex row center")
 
                 const pTemp = document.createElement("p")                
+
+                const weatherIcon = document.createElement("i")
+                weatherIcon.setAttribute("class", "wi")
                 /* Accounts for irregularities in parameter index */
                 for (const parameter in dayData[i].parameters) {
                     if (dayData[i].parameters[parameter].name === "t") {
                         pTemp.innerHTML = formatDataWithCel(dayData[i].parameters[parameter].values[0])
                     }
+                    else if (dayData[i].parameters[parameter].name === "Wsymb2") {
+                        const icon = getWeatherIcon(dayData[i].parameters[parameter].values[0])
+                        weatherIcon.classList.add(icon)
+                    }
                 }
-
-                const span = document.createElement("span")
-                span.setAttribute("class", "material-icons")
-                span.innerHTML = "brightness_2" // Change this to fit weather
-
-                div.append(pTemp, span)
+                div.append(pTemp, weatherIcon)
                 innerContainer.append(pDate, div)
                 container.append(innerContainer)
             }

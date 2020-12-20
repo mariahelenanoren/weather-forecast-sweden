@@ -142,8 +142,8 @@
     margin: 0 1rem;
 }
 
-.hour-container span {
-    margin: 0.5rem 0;
+.hour-container i {
+    margin: 0.6rem 0;
 }
 
 .hour-container p {
@@ -161,6 +161,6 @@
     background-color: rgba(0, 0, 0, 0.35)
 }
 
-.day-container span {
-    margin-left: 1rem;
+.day-container i {
+    margin-left: 0.5rem;
 }
