@@ -1,4 +1,5 @@
-function setBackgroundImage() {
+/** Sets the background image and color */
+function setBackground() {
     const backgroundImage = document.querySelector(".background-img")
     const background = document.querySelector("body")
     const season = getSeason();
@@ -20,7 +21,8 @@ function setBackgroundImage() {
     }
 }
 
-function getSeason() {
+/** Gets the current season */
+function getSeason(): string {
     let season: string;
     if (month <= 2 || month >= 10) {
         season = "winter"

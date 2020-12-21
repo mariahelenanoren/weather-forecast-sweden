@@ -2,7 +2,6 @@ window.addEventListener("load", (event) => forecastMain(event));
 
 /**
  * Functions to be run on window load
- * @param event
  */
 function forecastMain(event: Event) {
     loadLSIntoFavoritesList();
@@ -11,7 +10,7 @@ function forecastMain(event: Event) {
     presentForecastData();
     addEventListeners();
     cityPickerMain();
-    setBackgroundImage();
+    setBackground();
     changeSearchFieldState(event)
 }
 

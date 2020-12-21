@@ -1,4 +1,5 @@
-async function getSun(lon, lat) {
+/** Gets the sunrise API */
+async function getSun(lon: string, lat: string) {
     try {
         const result = await fetch("https://api.sunrise-sunset.org/json?lat=" + lat +"&lng=" + lon + "&date=today")
         const data = await result.json()
@@ -7,6 +8,7 @@ async function getSun(lon, lat) {
     }
 }
 
+/** Presents sunrise and sunset data */
 async function presentSun() {
     const data = await getSun(chosenCity.longitude, chosenCity.latitude);
     const sunrise = data.sunrise;
@@ -20,7 +22,8 @@ async function presentSun() {
     sunriseTarget.innerHTML = formattedSunrise
 }
 
-function formatSun(data: string) {
+/** Formats sunrise and sunset time */
+function formatSun(data: string): string {
     let time: string | string[]
     time = data.split(" ")
     const timePeriod = time[1];
@@ -58,7 +61,8 @@ function formatSun(data: string) {
     return formattedData;
 }
 
-function checkDaylightSavings(){
+/** Checks if it is currently daylight savings */
+function checkDaylightSavings(): boolean {
     const daylightSavingsDate  = new Date(year, 5); // Date which has DST, for comparison
     let daylightSavings: boolean;
 
@@ -71,7 +75,8 @@ function checkDaylightSavings(){
     return daylightSavings;
 }
 
-function addTwelveHours(hour) {
+/** Adds value of 12 to hour */
+function addTwelveHours(hour: number): number {
     const formattedHour = hour + 12
     return formattedHour;
 }
