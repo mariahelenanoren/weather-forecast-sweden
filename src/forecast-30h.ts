@@ -1,4 +1,5 @@
-function present30HForecast(data) {
+/** Creates and presents 30h forecast */
+function present30HForecast(data: object | any) {
     const container = document.querySelector(".hourly-forecast-inner")
     const hourData = data.timeSeries
     let skipFirstHour: boolean;
