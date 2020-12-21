@@ -33,7 +33,7 @@ function presentForecastForToday(data) {
                 ;break
             case "Wsymb2":
                 presentWeatherCondition(parameters[parameter])
-                presentWeatherIcon(parameters[parameter]);
+                createWeatherIcon(parameters[parameter]);
             ;break
             default:
                 break;
@@ -98,10 +98,12 @@ function presentWeatherCondition(data) {
     weatherTarget.innerHTML = "Just nu: " + weatherCondition   
 }
 
-function presentWeatherIcon(data) {
-    const iconTarget = document.querySelector("#weather-icon")
+function createWeatherIcon(data) {
+    const cityName = document.querySelector("#name")
     const weatherIcon = getWeatherIcon(data.values[0])
-    iconTarget.classList.add(weatherIcon)  
+    const icon = document.createElement("i")
+    icon.setAttribute("class", "wi " + weatherIcon)
+    cityName.append(icon)
 }
 
 function getWeatherCondition(value: number): string {

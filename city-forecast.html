@@ -42,12 +42,14 @@
                 </nav>
                 <div class="search-field">
                     <form class="search flex row align-center justify-space-between">
-                        <input list="stations" name="station" id="station" placeholder="Sök efter stad..." autocomplete="off">
+                        <input list="stations" name="station" id="station" placeholder="Sök efter stad eller ort..." autocomplete="off">
                         <span class="material-icons" id="search-icon">
                             search
                         </span>
                     </form>
-                    <ul class="stations-list hidden" id="stations-list"></ul>
+                    <ul class="stations-list hidden" id="stations-list">
+                        <!-- list items inserted by city-picker.ts -->
+                    </ul>
                 </div>
             </header>
 
@@ -55,8 +57,9 @@
                 <div class="city-header grid">
                     <p class="municipality-name semi-bold" id="municipality"></p> <!-- JS CODE FOR THIS -->
                     <div class="city flex center">
-                        <p class="city-name semi-bold" id="name"></p> <!-- JS CODE FOR THIS -->
-                        <i class="wi" id="weather-icon"></i>
+                        <p class="city-name semi-bold" id="name">
+                            <!-- data inserted by forecast-today.ts -->
+                        </p>
                     </div>
                     <span class="favorite material-icons" id="favorite">
                         favorite_border
@@ -67,34 +70,50 @@
                     <p class="temp light" id="temp"></p>
                     <div class="sunup flex column">
                         <h2 class="semi-bold">Soluppgång</h2>
-                        <p id="sunrise" class="light"></p> <!-- JS CODE FOR THIS -->
+                        <p id="sunrise" class="light">
+                            <!-- data inserted by forecast-today.ts -->
+                        </p>
                     </div>
                     <div class="sundown flex column">
                         <h2 class="semi-bold">Solnedgång</h2>
-                        <p id="sunset" class="light"></p> <!-- JS CODE FOR THIS -->
+                        <p id="sunset" class="light">
+                            <!-- data inserted by forecast-today.ts -->
+                        </p>
                     </div>
                     <div class="visibility flex column">
                         <h2 class="semi-bold">Sikt</h2>
-                        <p id="visibility" class="light"></p> <!-- JS CODE FOR THIS -->
+                        <p id="visibility" class="light">
+                            <!-- data inserted by forecast-today.ts -->
+                        </p>
                     </div>
                     <div class="humidity flex column">
                         <h2 class="semi-bold">Luftfuktighet</h2>
-                        <p id="humidity" class="light"></p> <!-- JS CODE FOR THIS -->
+                        <p id="humidity" class="light">
+                            <!-- data inserted by forecast-today.ts -->
+                        </p>
                     </div>
                     <div class="exp-temp flex column">
                         <h2 class="semi-bold">Känns som</h2>
-                        <p id="exp-temp" class="light"></p> <!-- JS CODE FOR THIS -->
+                        <p id="exp-temp" class="light">
+                            <!-- data inserted by forecast-today.ts -->
+                        </p>
                     </div>
                     <div class="wind flex column">
                         <h2 class="semi-bold">Vind</h2>
-                        <p id="wind" class="light"></p> <!-- JS CODE FOR THIS -->
+                        <p id="wind" class="light">
+                            <!-- data inserted by forecast-today.ts -->
+                        </p>
                     </div>
                     <div class="air-pressure flex column">
                         <h2 class="semi-bold">Lufttryck</h2>
-                        <p id="air-pressure" class="light"></p> <!-- JS CODE FOR THIS -->
+                        <p id="air-pressure" class="light">
+                            <!-- data inserted by forecast-today.ts -->
+                        </p>
                     </div>
                     <div class="weather-condition">
-                        <p id="weather-condition" class="light"></p>
+                        <p id="weather-condition" class="light">
+                            <!-- data inserted by forecast-today.ts -->
+                        </p>
                     </div>
                 </div>
             </div>

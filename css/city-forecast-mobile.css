@@ -27,6 +27,18 @@
     ;
 }
 
+.temp {
+    font-size: 4rem;
+}
+
+.city-name {
+    font-size: 1.5rem;
+}
+
+.city-name i {
+    margin-left: 0.5rem;
+}
+
 /* Hourly forecast */
 
 .hourly-forecast {
