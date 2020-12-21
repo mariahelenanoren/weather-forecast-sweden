@@ -1,3 +1,4 @@
+/** Loads favorites from local storage */
 function loadLSIntoFavoritesList() {
     const favorites = JSON.parse(localStorage.getItem("favorites"))
     for (const favorite in favorites) {
@@ -5,7 +6,8 @@ function loadLSIntoFavoritesList() {
     }
 }
 
-function addOrRemoveFavorite(locality, municipality) {
+/** Adds or removes favorite */
+function addOrRemoveFavorite(locality: string, municipality: string) {
     const isFavorite = checkIfFavorite(locality, municipality)
     if (isFavorite) {
         removeFavorite(locality, municipality)
@@ -14,7 +16,8 @@ function addOrRemoveFavorite(locality, municipality) {
     }
 }
 
-function checkIfFavorite(locality, municipality):boolean {
+/** Checks if city is favorite */
+function checkIfFavorite(locality: string, municipality: string):boolean {
     let isFavorite = false;
     for (const favorite in favoritesList) {
         if (locality === favoritesList[favorite].locality && municipality === favoritesList[favorite].municipality) {
@@ -24,7 +27,8 @@ function checkIfFavorite(locality, municipality):boolean {
     return isFavorite;
 }
 
-async function addFavorite() {
+/** Adds city as favorite */
+function addFavorite() {
     const favSymbol = document.querySelector("#favorite")
     favoritesList.push(chosenCity)
     localStorage.setItem("favorites", JSON.stringify(favoritesList))
@@ -34,7 +38,8 @@ async function addFavorite() {
     }
 }
 
-function removeFavorite(locality, municipality) {
+/** Removes city as favorite */
+function removeFavorite(locality: string, municipality: string) {
     const favSymbol = document.querySelector("#favorite")
     for (let i = 0; i < favoritesList.length; i++) {
         if (locality === favoritesList[i].locality && municipality === favoritesList[i].municipality) {
