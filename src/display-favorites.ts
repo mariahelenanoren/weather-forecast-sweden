@@ -1,3 +1,4 @@
+/** Displays favorites */
 async function displayFavorites() {
     const container = document.querySelector(".favorites-container")
 
@@ -40,7 +41,6 @@ async function displayFavorites() {
 
         const moreButton = document.createElement("a")
         moreButton.setAttribute("class", "more-button normal")
-        moreButton.setAttribute("href", "../city-forecast.html")
         moreButton.innerHTML = "Mer info"
 
         /* Accounts for irregularities in parameter index */
@@ -70,12 +70,14 @@ async function displayFavorites() {
     }
 }
 
-async function presentFavoriteForecast(index) {
+/** Presents forecast for favorite */
+async function presentFavoriteForecast(index: string) {
     if (index) {
         chosenCity.locality = favoritesList[index].locality
         chosenCity.municipality = favoritesList[index].municipality
         chosenCity.longitude = favoritesList[index].longitude
         chosenCity.latitude = favoritesList[index].latitude
         setChosenCityLS()
+        goToForecast()
     }
 }
