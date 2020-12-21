@@ -37,6 +37,7 @@ async function getSvenskaStader() {
         const data = await result.text()
         return data;
     } catch(error) {
+        console.log(error)
     }
 }
 
@@ -117,7 +118,6 @@ function changeSearchFieldState(event: Event) {
 
 /** Transforms the search field for mobile devices */
 function transformSearchField(isSearchFieldOpen: boolean) {
-    console.log(isSearchFieldOpen)
     const inputField: HTMLInputElement = document.querySelector(".search input")
     const searchField: HTMLInputElement = document.querySelector(".search-field")
     const headerNav: HTMLDivElement = document.querySelector("#header-nav")

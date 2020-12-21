@@ -45,12 +45,11 @@ async function displayFavorites() {
 
         /* Accounts for irregularities in parameter index */
         for (const parameter in favoriteData.parameters) {
-            if(favoriteData.parameters[parameter].name === "t") {
+            if (favoriteData.parameters[parameter].name === "t") {
                 pTemp.innerHTML = formatDataWithCel(favoriteData.parameters[parameter].values[0])
             }
-            if(favoriteData.parameters[parameter].name === "Wsymb2") {
+            if (favoriteData.parameters[parameter].name === "Wsymb2") {
                 const icon = getWeatherIcon(favoriteData.parameters[parameter].values[0])
-                console.log(icon)
                 weatherIcon.classList.add(icon)
             }
         }
