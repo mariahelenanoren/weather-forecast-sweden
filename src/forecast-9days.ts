@@ -1,4 +1,5 @@
-function present9DayForecast(data) {
+/** Creates and presents 9 day forecast */
+function present9DayForecast(data: object | any) {
     const dayData = data.timeSeries
     const container = document.querySelector(".weekly-forecast")
     for (let d = 0; d < 10; d++) {
@@ -43,7 +44,8 @@ function present9DayForecast(data) {
     }
 }
 
-function checkEndOfMonth(month, day) {
+/** Checks if it is the end of the month */
+function checkEndOfMonth(month: number, day: number): boolean {
     const daysInMonth = getDaysInMonth(year, month)
     let nextMonth = false;
     if (day > daysInMonth) {
@@ -52,11 +54,13 @@ function checkEndOfMonth(month, day) {
     return nextMonth;
 }
 
-function getDaysInMonth(month,year) {
+/** Gets the number of days in a month */
+function getDaysInMonth(month: number, year: number): number {
    return new Date(year, month, 0).getDate();
 }
 
-function getNameOfMonth(month) {
+/** Gets the name of the month */
+function getNameOfMonth(month: number): string {
     switch(month) {
         case 1: return "januari"
         case 2: return "februari"
@@ -73,7 +77,8 @@ function getNameOfMonth(month) {
     }
 }
 
-function getNameOfWeekday(year, month, date) {
+/** Gets the name of the weekday */
+function getNameOfWeekday(year: number, month: number, date: number): string {
     const day = new Date(year, month - 1, date - 1).getDay();
     switch(day) {
         case 0: return "Måndag"
