@@ -9,15 +9,15 @@ function setBackground() {
     }
     if (season === "spring") {
         backgroundImage.setAttribute("src", "./assets/spring.jpg")
-        background.style.backgroundColor = "#472c43"
+        background.style.backgroundColor = "#2c472e"
     }
     if (season === "summer") {
         backgroundImage.setAttribute("src", "./assets/summer.jpg")
-        background.style.backgroundColor = "#2c472e"
+        background.style.backgroundColor = "#472c47"
     }
     if (season === "fall") {
         backgroundImage.setAttribute("src", "./assets/fall.jpg")
-        background.style.backgroundColor = "#47382c"
+        background.style.backgroundColor = "#47392c"
     }
 }
 
