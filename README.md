@@ -9,7 +9,7 @@ Att göra:
  - (X) lägga till fritext som beskriver väderförhållandet just nu
  - (X) skapa CSS variabler
  - lägga till procent chans för nederbörd(?)
- - lägga till JSDOC
+ - (X)lägga till JSDOC
 
 
  Lista över väderförhållanden: (+ solupp/solned?)
