@@ -159,6 +159,7 @@
 
 .day-container {
     padding: 0 1rem;
+    margin: 5px 0; /* Pixels are needed for correct space rendering */
     background-color: rgba(0, 0, 0, 0.35)
 }
 
