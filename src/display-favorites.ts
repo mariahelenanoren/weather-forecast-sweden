@@ -76,6 +76,6 @@ async function presentFavoriteForecast(index) {
         chosenCity.municipality = favoritesList[index].municipality
         chosenCity.longitude = favoritesList[index].longitude
         chosenCity.latitude = favoritesList[index].latitude
-        setChosenCity()
+        setChosenCityLS()
     }
 }

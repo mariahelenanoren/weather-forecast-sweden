@@ -114,7 +114,7 @@ header a:hover {
     font-size: 1.2rem;
 }
 
-.stations-list {
+.city-list {
     width: var(--search-bar-width);
     height: auto;
     max-height: 12rem;
@@ -130,11 +130,11 @@ header a:hover {
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
-.stations-list::-webkit-scrollbar {
+.city-list::-webkit-scrollbar {
     display: none;
   }
 
-.stations-list li {
+.city-list li {
     font-weight: 400;
     font-size: 1rem;
     padding: 0.5rem 0 0.5rem 1rem;

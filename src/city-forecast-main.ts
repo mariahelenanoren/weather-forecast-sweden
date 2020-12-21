@@ -1,5 +1,9 @@
 window.addEventListener("load", (event) => forecastMain(event));
 
+/**
+ * Functions to be run on window load
+ * @param event
+ */
 function forecastMain(event: Event) {
     loadLSIntoFavoritesList();
     loadLSIntoChosenCity()
@@ -11,6 +15,7 @@ function forecastMain(event: Event) {
     changeSearchFieldState(event)
 }
 
+/** Sets event listeners */
 function addEventListeners() {
     const favorite = document.querySelector("#favorite")
 

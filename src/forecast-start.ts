@@ -8,7 +8,6 @@ async function getForecast(lon, lat) {
 }
 
 async function presentForecastData() {
-    const chosenCityLS = getChosenCity()
     const data = await getForecast(chosenCity.longitude, chosenCity.latitude);
     
     presentCityName()
