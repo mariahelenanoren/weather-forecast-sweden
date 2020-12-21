@@ -54,7 +54,7 @@ async function parseSvenskaStader() {
             longitude: parameters[4]
         }
         if (cityObject.locality !== "" && cityObject.locality !== "Locality") {
-            cityArray.push(cityObject)
+            allCitiesList.push(cityObject)
         }
     }
 }
@@ -76,13 +76,13 @@ function insertCitiesInDataList(input: HTMLInputElement, event: Event) {
     const dataList: HTMLUListElement = document.querySelector("#city-list")
     emptyCityList();
 
-   for (let city in cityArray) {
-       if ((inputValue.toLowerCase()) === (cityArray[city].locality.slice(0, inputValue.length).toLowerCase())) {
+   for (let city in allCitiesList) {
+       if ((inputValue.toLowerCase()) === (allCitiesList[city].locality.slice(0, inputValue.length).toLowerCase())) {
             const li = document.createElement("li")
-            if (cityArray[city].locality !== cityArray[city].municipality) {
-                li.innerHTML = cityArray[city].locality + ", " + cityArray[city].municipality
+            if (allCitiesList[city].locality !== allCitiesList[city].municipality) {
+                li.innerHTML = allCitiesList[city].locality + ", " + allCitiesList[city].municipality
             } else {
-                li.innerHTML = cityArray[city].locality
+                li.innerHTML = allCitiesList[city].locality
             }
             li.setAttribute("index", city)
             dataList.append(li)
@@ -188,10 +188,10 @@ function presentCityInInput(li) {
 
 /* Sets chosenCity */
 async function setCity(index) {
-    chosenCity.locality = cityArray[index].locality
-    chosenCity.municipality = cityArray[index].municipality
-    chosenCity.longitude = cityArray[index].longitude
-    chosenCity.latitude = cityArray[index].latitude
+    chosenCity.locality = allCitiesList[index].locality
+    chosenCity.municipality = allCitiesList[index].municipality
+    chosenCity.longitude = allCitiesList[index].longitude
+    chosenCity.latitude = allCitiesList[index].latitude
 
     setChosenCityLS()
 }
