@@ -1,13 +1,14 @@
-function presentForecastForToday(data) {
-    let todaysData;
+/** Presents todays forecast */
+function presentForecastForToday(data: object | any) {
+    let todaysData: any;
     /* Accounts for late data updates */
     if (formatSMHIHour(data.timeSeries[0].validTime) === hour + ":00") {
         todaysData = data.timeSeries[0]
     } else {
         todaysData = data.timeSeries[1]
     }
-    let temp;
-    let wind;
+    let temp: string;
+    let wind: string;
 
     const parameters = todaysData.parameters
 
@@ -42,63 +43,72 @@ function presentForecastForToday(data) {
     presentExpTemp(temp, wind)
 }
 
-function presentTemp(data) {
+/** Presents temperature data */
+function presentTemp(data: ObjectConstructor) {
     const tempTarget = document.querySelector("#temp")
     const tempData = data.values[0]
     tempTarget.innerHTML = formatDataWithDeg(tempData);
 }
 
-function presentVisibility(data) {
+/** Presents visibility data */
+function presentVisibility(data: ObjectConstructor) {
     const visibilityTarget = document.querySelector("#visibility")
     const visibilityData = data.values[0]
     const visibility = Math.round(visibilityData)
     visibilityTarget.innerHTML = visibility + " km"
 }
 
-function presentHumidity(data) {
+/** Presents humidity data */
+function presentHumidity(data: ObjectConstructor) {
     const humidityTarget = document.querySelector("#humidity")
     const humidityData = data.values[0]
     humidityTarget.innerHTML = humidityData + "&#37;" 
 }
 
-function presentExpTemp(temp, wind) {
+/** Presents experienced temperature data */
+function presentExpTemp(temp: string, wind: string) {
     const expTempTarget = document.querySelector("#exp-temp")
-    const expTemp = calculateExpTemp(temp, wind)
+    const expTemp = calculateExpTemp(Number(temp), Number(wind))
     expTempTarget.innerHTML = expTemp + "&deg;C"
 }
 
-function calculateExpTemp(tempData, windData) {
-    let expTemp;
+/** Calculates experienced temperature */
+function calculateExpTemp(tempData: number, windData: number): string {
+    let expTemp: number;
     if (tempData <= 10 && tempData >= -40 && windData >= 2 && windData <= 35) {
         expTemp = 13.12 + (0.6215 * tempData) - (13.956 * Math.pow(windData, 0.16)) + (0.48669 * tempData * Math.pow(windData, 0.16)) // Wind chill formula from SMHI
         expTemp = Math.round(expTemp) 
     } else {
         expTemp = Math.round(tempData);
     }
-    return expTemp;
+    return String(expTemp);
 }
 
-function presentWind(data) {
+/** Presents wind data */
+function presentWind(data: ObjectConstructor) {
     const windTarget = document.querySelector("#wind")
     const windData = data.values[0]
     const wind = Math.round(windData)
     windTarget.innerHTML = wind + " m/s"
 }
 
-function presentAirPressure(data) {
+/** Presents air pressure data */
+function presentAirPressure(data: ObjectConstructor) {
     const airPressureTarget = document.querySelector("#air-pressure")
     const airPressureData = data.values[0]
     const airPressure = Math.round(airPressureData)
     airPressureTarget.innerHTML = airPressure + " hPa"
 }
 
-function presentWeatherCondition(data) {
+/** Presents weather condition data */
+function presentWeatherCondition(data:ObjectConstructor) {
     const weatherTarget = document.querySelector("#weather-condition")
     const weatherCondition = getWeatherCondition(data.values[0])
     weatherTarget.innerHTML = "Just nu: " + weatherCondition   
 }
 
-function createWeatherIcon(data) {
+/** Creates and presents weather icon */
+function createWeatherIcon(data: ObjectConstructor) {
     const cityName = document.querySelector("#name")
     const weatherIcon = getWeatherIcon(data.values[0])
     const icon = document.createElement("i")
@@ -106,6 +116,7 @@ function createWeatherIcon(data) {
     cityName.append(icon)
 }
 
+/** Gets the weather condition */
 function getWeatherCondition(value: number): string {
     switch (value) {
         case 1: return "klar himmel"
