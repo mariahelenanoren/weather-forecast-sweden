@@ -1,23 +1,27 @@
+/** Formats data which is presented with celcius symbol */
 function formatDataWithDeg(data) {
     const formattedData = Math.round(data) + "&deg;"
     return formattedData;
 }
 
-function formatDataWithCel(data) {
+/** Formats data which is presented with celcius symbol and C */
+function formatDataWithCel(data: number) {
     const formattedData = Math.round(data) + "&deg;C"
     return formattedData;
 }
 
-function formatHour(data) {
-    const date = data
-    let time = date.split("T")
+/** Formats hours derived from SMHI data */
+function formatSMHIHour(data: string) {
+    const date: string = data
+    let time: string | string[] = date.split("T")
     time = time[1]
     const timeSets = time.split(":")
     const hour = timeSets[0] + ":00"
     return hour;
 }
 
-function formatSingleDigitValues(data) {
+/** Adds a 0 before single digit values */
+function formatSingleDigitValues(data: number) {
     let formattedData = String(data)
     if (formattedData.length < 2) {
         formattedData = "0" + formattedData
@@ -25,6 +29,7 @@ function formatSingleDigitValues(data) {
     return formattedData;
 }
 
+/** Gets name for weather icon */
 function getWeatherIcon(value: number): string {
     switch (value) {
         case 1: return "wi-day-sunny"

@@ -1,7 +1,7 @@
 function presentForecastForToday(data) {
     let todaysData;
     /* Accounts for late data updates */
-    if (formatHour(data.timeSeries[0].validTime) === hour + ":00") {
+    if (formatSMHIHour(data.timeSeries[0].validTime) === hour + ":00") {
         todaysData = data.timeSeries[0]
     } else {
         todaysData = data.timeSeries[1]

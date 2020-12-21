@@ -6,7 +6,7 @@ function present30HForecast(data) {
 
     for (let i = 0; i < 31; i++) {
         /* Accounts for late data updates */
-        if (formatSingleDigitValues(hour - 1) + ":00" === formatHour(hourData[i].validTime)) {
+        if (formatSingleDigitValues(hour - 1) + ":00" === formatSMHIHour(hourData[i].validTime)) {
             skipFirstHour = true;
         } else {
             const div = document.createElement("div")
@@ -18,7 +18,7 @@ function present30HForecast(data) {
                 pTime.innerHTML = "Nu"
             } else {
                 pTime.setAttribute("class", "normal")
-                pTime.innerHTML = formatHour(hourData[i].validTime)
+                pTime.innerHTML = formatSMHIHour(hourData[i].validTime)
             }
     
             const weatherIcon = document.createElement("i")
