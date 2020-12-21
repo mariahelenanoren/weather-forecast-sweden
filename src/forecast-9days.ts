@@ -4,7 +4,7 @@ function present9DayForecast(data: object | any) {
     const container = document.querySelector(".weekly-forecast")
     for (let d = 0; d < 10; d++) {
         let validYear: number | string = Number(year)
-        let validMonth: number | string = Number(month) + 1 // +1 because month variable is zero-based
+        let validMonth: number | string = Number(month)
         let validDate: number | string = Number(date) + 1 + d // +1 because forecast should start from day after today
         if (checkEndOfMonth(validMonth, validDate) === true) {
             validMonth += 1;
@@ -57,24 +57,6 @@ function checkEndOfMonth(month: number, day: number): boolean {
 /** Gets the number of days in a month */
 function getDaysInMonth(month: number, year: number): number {
    return new Date(year, month, 0).getDate();
-}
-
-/** Gets the name of the month */
-function getNameOfMonth(month: number): string {
-    switch(month) {
-        case 1: return "januari"
-        case 2: return "februari"
-        case 3: return "mars"
-        case 4: return "april"
-        case 5: return "maj"
-        case 6: return "juni"
-        case 7: return "juli"
-        case 8: return "augusti"
-        case 9: return "september"
-        case 10: return "oktober"
-        case 11: return "november"
-        case 12: return "december"
-    }
 }
 
 /** Gets the name of the weekday */

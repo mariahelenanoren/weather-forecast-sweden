@@ -61,3 +61,21 @@ function getWeatherIcon(value: number): string {
         case 27: return "wi-snow"
     }
 }
+
+/** Gets the name of the month */
+function getNameOfMonth(month: number): string {
+    switch(month) {
+        case 1: return "januari"
+        case 2: return "februari"
+        case 3: return "mars"
+        case 4: return "april"
+        case 5: return "maj"
+        case 6: return "juni"
+        case 7: return "juli"
+        case 8: return "augusti"
+        case 9: return "september"
+        case 10: return "oktober"
+        case 11: return "november"
+        case 12: return "december"
+    }
+}

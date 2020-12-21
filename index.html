@@ -20,6 +20,7 @@
     <script src="./dist/global-variables.js"></script>
     <script src="./dist/index-main.js"></script>
     <script src="./dist/city-picker.js"></script>
+    <script src="./dist/welcome-section.js"></script>
     <script src="./dist/forecast-start.js"></script>
     <script src="./dist/data-formatting.js"></script>
     <script src="./dist/sunrise-sunset.js"></script>
@@ -39,7 +40,7 @@
                 </nav>
                 <div class="search-field">
                     <form class="search flex row align-center justify-space-between">
-                        <input class="flex align-center" list="cities" name="city" id="city" placeholder="Sök efter stad..." autocomplete="off">
+                        <input class="flex align-center" list="cities" name="city" id="city" placeholder="Sök efter stad eller ort..." autocomplete="off">
                         <span class="material-icons" id="search-icon">
                             search
                         </span>
@@ -51,7 +52,9 @@
             </header>
             <div class="welcome-section">
                 <p class="welcome-today normal">Idag</p>
-                <p class="welcome-date semi-bold">12 november</p> <!-- JS CODE FOR THIS -->
+                <p class="welcome-date semi-bold" id="welcome-date">
+                    <!-- content inserted by welcome-section.ts -->
+                </p>
             </div>
         </div>
     </div>

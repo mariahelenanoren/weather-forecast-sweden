@@ -7,4 +7,5 @@ function indexMain(event: Event) {
     cityPickerMain();
     setBackground();
     changeSearchFieldState(event);
+    updateWelcomeSection()
 }
