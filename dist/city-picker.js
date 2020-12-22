@@ -155,7 +155,8 @@ function insertCitiesInDataList(input, event) {
 }
 /** Redirects window to city-forecast.html */
 function goToForecast() {
-    window.location.href = "./city-forecast.html";
+    // HREF IS WRITTEN TO COMPLY WITH GITHUB PAGES, NEEDS TO BE CHANGED IF HOSTING IS CHANGED
+    window.location.href = "./weather-forecast-sweden/city-forecast.html";
 }
 /** Changes state of search-field */
 function changeSearchFieldState(event) {
