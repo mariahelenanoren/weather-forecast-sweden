@@ -99,8 +99,7 @@ function insertCitiesInDataList(input: HTMLInputElement, event: Event) {
 
 /** Redirects window to city-forecast.html */
 function goToForecast() {
-    // HREF IS WRITTEN TO COMPLY WITH GITHUB PAGES, NEEDS TO BE CHANGED IF HOSTING IS CHANGED
-    window.location.href = "./weather-forecast-sweden/city-forecast.html"
+    window.location.href = "./city-forecast.html"
 }
 
 /** Changes state of search-field */
