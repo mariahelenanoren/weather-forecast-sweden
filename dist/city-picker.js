@@ -155,7 +155,7 @@ function insertCitiesInDataList(input, event) {
 }
 /** Redirects window to city-forecast.html */
 function goToForecast() {
-    window.location.href = "../city-forecast.html";
+    window.location.href = "./city-forecast.html";
 }
 /** Changes state of search-field */
 function changeSearchFieldState(event) {
