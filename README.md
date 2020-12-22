@@ -1,5 +1,5 @@
 # Swedish weather forecast
-## A weather forecast website for most of Swedens cities and towns 
+## A weather forecast website for Swedens cities and towns 
 
 #### [Live demo](https://mariahelenanoren.github.io/weather-forecast-sweden/).
 
