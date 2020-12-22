@@ -13,10 +13,6 @@
     font-size: 6rem;
 }
 
-.sunup, .sundown, .visibility, .humidity, .exp-temp, .wind, .air-pressure {
-    font-size: 1.6rem;
-}
-
 .weather-condition {
     font-size: 1.6rem;
 }

@@ -4,18 +4,20 @@
 /* Main forecast */
 
 .main-forecast {
-    padding: 3rem var(--padding-mobile);
+    padding: 1rem var(--padding-mobile) 2rem var(--padding-mobile);
+}
+
+/* City header */
+.city-header {
+    padding: 0.5rem 0;
+    margin-bottom: 0.5rem;
 }
 
 /* Main forecast data */
 
-.main-forecast {
-    padding: 3rem var(--padding-mobile);
-}
-
 .main-data {
     row-gap: 0.5rem;
-    padding: 1rem 0 1rem 0;
+    padding: 1rem 0;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: 
     "temp ." 
@@ -28,7 +30,11 @@
 }
 
 .temp {
-    font-size: 4rem;
+    margin-bottom: 0.5rem;
+}
+
+.weather-condition {
+    font-size: 1.2rem;
 }
 
 .city-name {
@@ -43,13 +49,17 @@
 
 .hourly-forecast {
     width: 100%;
-    padding: 1.5rem var(--padding-mobile);
+    padding: 1rem var(--padding-mobile);
+}
+
+.hour-container {
+    margin: 0 0.5rem;
 }
 
 /* Weekly forecast */
 
 .weekly-forecast {
-    padding: 2rem 0;
+    padding: 1rem 0;
 }
 
 .day-container {
