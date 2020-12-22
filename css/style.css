@@ -4,9 +4,14 @@
 
 html, body {
     height: 100%;
-    width: 100%;
     margin: 0;
     font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.container {
+    padding-bottom: 4rem;
+    min-height: 100%;
+    position: relative;
 }
 
 ul {
@@ -131,6 +136,8 @@ header a:hover {
 /*--- FOOTER ---*/
 
 footer {
+    position: absolute;
+    bottom: 0;
     width: 100%;
     padding: 0 var(--padding-desktop);
     height: 4rem;

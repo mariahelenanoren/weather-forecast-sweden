@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Väder</title>
 
+    <!-- STYLESHEETS -->
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/style-tablet.css" media="screen and (max-width: 1024px)">
     <link rel="stylesheet" href="./css/style-mobile.css" media="screen and (max-width: 480px)">
@@ -15,9 +16,11 @@
     <link rel="stylesheet" href="./css/weather-icons.css">
     <link rel="stylesheet" href="./css/reusable-classes.css">
 
+    <!-- Font -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 
+    <!-- SCRIPTS -->
     <script defer src="./dist/global-variables.js"></script>
     <script src="./dist/city-forecast-main.js"></script>
     <script src="./dist/favorites.js"></script>
@@ -31,107 +34,127 @@
     <script src="./dist/seasonal-background.js"></script>
 </head>
 <body>
-    <div class="black-overlay">
-        <div class="img-container">
-            <img class="background-img">
+    <!-- Container enables footer to lay on bottom of page -->
+    <div class="container">
 
-            <header class="flex align-center justify-space-between">
-                <nav class="flex row align-center" id="header-nav">
-                    <h1 class="semi-bold">Väder</h1>
-                    <a class="normal" href="./index.html">Hem</a>
-                </nav>
-                <div class="search-field">
-                    <form class="search flex row align-center justify-space-between">
-                        <input list="cities" name="city" id="city" placeholder="Sök efter stad eller ort..." autocomplete="off">
-                        <span class="material-icons" id="search-icon">
-                            search
+        <!-- Darkens background image -->
+        <div class="black-overlay">
+            <div class="img-container">
+                <!-- Background image defined in seasonal-background.ts -->
+                <img class="background-img">
+
+                <!-- HEADER -->
+                <header class="flex align-center justify-space-between">
+                    <nav class="flex row align-center" id="header-nav">
+                        <h1 class="semi-bold">Väder</h1>
+                        <a class="normal" href="./index.html">Hem</a>
+                    </nav>
+
+                    <!-- Search-field -->
+                    <div class="search-field">
+                        <form class="search flex row align-center justify-space-between">
+                            <input list="cities" name="city" id="city" placeholder="Sök efter stad eller ort..." autocomplete="off">
+                            <span class="material-icons" id="search-icon">
+                                search
+                            </span>
+                        </form>
+
+                        <!-- City list -->
+                        <ul class="city-list hidden" id="city-list">
+                            <!-- list items inserted by city-picker.ts -->
+                        </ul>
+
+                    </div>
+                </header>
+
+                <!-- MAIN FORECAST -->
+                <div class="main-forecast">
+                    <div class="city-header grid">
+                        <p class="municipality-name semi-bold" id="municipality"></p> <!-- JS CODE FOR THIS -->
+                        <div class="city flex center">
+                            <p class="city-name semi-bold" id="name">
+                                <!-- data inserted by forecast-today.ts -->
+                            </p>
+                        </div>
+                        <span class="favorite material-icons" id="favorite">
+                            favorite_border
                         </span>
-                    </form>
-                    <ul class="city-list hidden" id="city-list">
-                        <!-- list items inserted by city-picker.ts -->
-                    </ul>
-                </div>
-            </header>
+                    </div>
 
-            <div class="main-forecast">
-                <div class="city-header grid">
-                    <p class="municipality-name semi-bold" id="municipality"></p> <!-- JS CODE FOR THIS -->
-                    <div class="city flex center">
-                        <p class="city-name semi-bold" id="name">
-                            <!-- data inserted by forecast-today.ts -->
-                        </p>
+                    <!-- Main-data grid -->
+                    <div class="main-data grid">
+                        <p class="temp light" id="temp"></p>
+                        <div class="sunup flex column">
+                            <h2 class="semi-bold">Soluppgång</h2>
+                            <p id="sunrise" class="light">
+                                <!-- data inserted by forecast-today.ts -->
+                            </p>
+                        </div>
+                        <div class="sundown flex column">
+                            <h2 class="semi-bold">Solnedgång</h2>
+                            <p id="sunset" class="light">
+                                <!-- data inserted by forecast-today.ts -->
+                            </p>
+                        </div>
+                        <div class="visibility flex column">
+                            <h2 class="semi-bold">Sikt</h2>
+                            <p id="visibility" class="light">
+                                <!-- data inserted by forecast-today.ts -->
+                            </p>
+                        </div>
+                        <div class="humidity flex column">
+                            <h2 class="semi-bold">Luftfuktighet</h2>
+                            <p id="humidity" class="light">
+                                <!-- data inserted by forecast-today.ts -->
+                            </p>
+                        </div>
+                        <div class="exp-temp flex column">
+                            <h2 class="semi-bold">Känns som</h2>
+                            <p id="exp-temp" class="light">
+                                <!-- data inserted by forecast-today.ts -->
+                            </p>
+                        </div>
+                        <div class="wind flex column">
+                            <h2 class="semi-bold">Vind</h2>
+                            <p id="wind" class="light">
+                                <!-- data inserted by forecast-today.ts -->
+                            </p>
+                        </div>
+                        <div class="air-pressure flex column">
+                            <h2 class="semi-bold">Lufttryck</h2>
+                            <p id="air-pressure" class="light">
+                                <!-- data inserted by forecast-today.ts -->
+                            </p>
+                        </div>
+                        <div class="weather-condition">
+                            <p id="weather-condition" class="light">
+                                <!-- data inserted by forecast-today.ts -->
+                            </p>
+                        </div>
                     </div>
-                    <span class="favorite material-icons" id="favorite">
-                        favorite_border
-                    </span>
                 </div>
+            </div>
 
-                <div class="main-data grid">
-                    <p class="temp light" id="temp"></p>
-                    <div class="sunup flex column">
-                        <h2 class="semi-bold">Soluppgång</h2>
-                        <p id="sunrise" class="light">
-                            <!-- data inserted by forecast-today.ts -->
-                        </p>
-                    </div>
-                    <div class="sundown flex column">
-                        <h2 class="semi-bold">Solnedgång</h2>
-                        <p id="sunset" class="light">
-                            <!-- data inserted by forecast-today.ts -->
-                        </p>
-                    </div>
-                    <div class="visibility flex column">
-                        <h2 class="semi-bold">Sikt</h2>
-                        <p id="visibility" class="light">
-                            <!-- data inserted by forecast-today.ts -->
-                        </p>
-                    </div>
-                    <div class="humidity flex column">
-                        <h2 class="semi-bold">Luftfuktighet</h2>
-                        <p id="humidity" class="light">
-                            <!-- data inserted by forecast-today.ts -->
-                        </p>
-                    </div>
-                    <div class="exp-temp flex column">
-                        <h2 class="semi-bold">Känns som</h2>
-                        <p id="exp-temp" class="light">
-                            <!-- data inserted by forecast-today.ts -->
-                        </p>
-                    </div>
-                    <div class="wind flex column">
-                        <h2 class="semi-bold">Vind</h2>
-                        <p id="wind" class="light">
-                            <!-- data inserted by forecast-today.ts -->
-                        </p>
-                    </div>
-                    <div class="air-pressure flex column">
-                        <h2 class="semi-bold">Lufttryck</h2>
-                        <p id="air-pressure" class="light">
-                            <!-- data inserted by forecast-today.ts -->
-                        </p>
-                    </div>
-                    <div class="weather-condition">
-                        <p id="weather-condition" class="light">
-                            <!-- data inserted by forecast-today.ts -->
-                        </p>
-                    </div>
+            <!-- HOURLY FORECAST -->
+            <div class="hourly-forecast flex column">
+                <div class="hourly-forecast-inner flex row">
+                    <!-- content inserted by forecast.ts -->
                 </div>
             </div>
         </div>
 
-        <div class="hourly-forecast flex column">
-            <div class="hourly-forecast-inner flex row">
-                <!-- content inserted by forecast.ts -->
+        <!-- WEEKLY FORECAST -->
+        <div class="weekly-forecast">
+            <!-- content inserted by forecast.ts -->
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="flex center">
+            <div class="footer-inner">
+                <p class="normal text-right">Maria Helena Norén &#169; 2021</p>
             </div>
-        </div>
+        </footer>
+        
     </div>
-    <div class="weekly-forecast">
-        <!-- content inserted by forecast.ts -->
-    </div>
-    <footer class="flex center">
-        <div class="footer-inner">
-            <p class="normal text-right">Maria Helena Norén &#169; 2021</p>
-        </div>
-    </footer>
 </body>
 </html>

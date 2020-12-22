@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Väder</title>
 
+    <!-- STYLESHEETS -->
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/style-tablet.css" media="screen and (max-width: 1024px)">
     <link rel="stylesheet" href="./css/style-mobile.css" media="screen and (max-width: 480px)">
@@ -14,9 +15,11 @@
     <link rel="stylesheet" href="./css/weather-icons.css">
     <link rel="stylesheet" href="./css/reusable-classes.css">
 
+    <!-- Font -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 
+    <!-- SCRIPTS --> 
     <script src="./dist/global-variables.js"></script>
     <script src="./dist/index-main.js"></script>
     <script src="./dist/city-picker.js"></script>
@@ -29,42 +32,61 @@
     <script src="./dist/seasonal-background.js"></script>
 </head>
 <body>
-    <div class="black-overlay">
-        <div class="img-container">
-            <img class="background-img">
+        <!-- Container enables footer to lay on bottom of page -->
+        <div class="container">
 
-            <header class="flex align-center justify-space-between">
-                <nav class="flex row align-center" id="header-nav">
-                    <h1 class="semi-bold">Väder</h1>
-                    <a class="normal active" href="./index.html">Hem</a>
-                </nav>
-                <div class="search-field">
-                    <form class="search flex row align-center justify-space-between">
-                        <input class="flex align-center" list="cities" name="city" id="city" placeholder="Sök efter stad eller ort..." autocomplete="off">
-                        <span class="material-icons" id="search-icon">
-                            search
-                        </span>
-                    </form>
-                    <ul class="city-list hidden" id="city-list">
-                        <!-- list items inserted by city-picker.ts -->
-                    </ul>
+            <!-- Darkens background image -->
+            <div class="black-overlay">
+                <div class="img-container">
+                    <!-- Background image defined in seasonal-background.ts -->
+                    <img class="background-img">
+    
+                    <!-- HEADER -->
+                    <header class="flex align-center justify-space-between">
+                        <nav class="flex row align-center" id="header-nav">
+                            <h1 class="semi-bold">Väder</h1>
+                            <a class="normal active" href="./index.html">Hem</a>
+                        </nav>
+    
+                        <!-- Search-field -->
+                        <div class="search-field">
+                            <form class="search flex row align-center justify-space-between">
+                                <input list="cities" name="city" id="city" placeholder="Sök efter stad eller ort..." autocomplete="off">
+                                <span class="material-icons" id="search-icon">
+                                    search
+                                </span>
+                            </form>
+    
+                            <!-- City list -->
+                            <ul class="city-list hidden" id="city-list">
+                                <!-- list items inserted by city-picker.ts -->
+                            </ul>
+    
+                        </div>
+                    </header>
+
+                <!-- WELCOME SECTION -->
+                <div class="welcome-section">
+                    <p class="welcome-today normal">Idag</p>
+                    <p class="welcome-date semi-bold" id="welcome-date">
+                        <!-- content inserted by welcome-section.ts -->
+                    </p>
                 </div>
-            </header>
-            <div class="welcome-section">
-                <p class="welcome-today normal">Idag</p>
-                <p class="welcome-date semi-bold" id="welcome-date">
-                    <!-- content inserted by welcome-section.ts -->
-                </p>
             </div>
         </div>
-    </div>
-    <div class="favorites-container grid">
-        <!-- content inserted by favorite.ts -->
-    </div>
-    <footer class="flex center">
-        <div class="footer-inner">
-            <p class="normal text-right">Maria Helena Norén &#169; 2021</p>
+
+        <!-- FAVORITES -->
+        <div class="favorites-container grid">
+            <!-- content inserted by favorite.ts -->
         </div>
-    </footer>
+
+        <!-- FOOTER -->
+        <footer class="flex center">
+            <div class="footer-inner">
+                <p class="normal text-right">Maria Helena Norén &#169; 2021</p>
+            </div>
+        </footer>
+        
+    </div>
 </body>
 </html>

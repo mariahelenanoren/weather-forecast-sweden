@@ -13,7 +13,8 @@ const hour: number = dateToday.getHours();
 const allCitiesList = []
 
 /** Array for favorite cities */
-const favoritesList = [];
+const favoritesList = [
+];
 
 /** Search-field state */
 let isSearchFieldOpen: boolean;
