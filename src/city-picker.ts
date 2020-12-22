@@ -99,7 +99,7 @@ function insertCitiesInDataList(input: HTMLInputElement, event: Event) {
 
 /** Redirects window to city-forecast.html */
 function goToForecast() {
-    window.location.href = "../city-forecast.html"
+    window.location.href = "./city-forecast.html"
 }
 
 /** Changes state of search-field */
