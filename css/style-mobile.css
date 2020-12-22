@@ -20,6 +20,12 @@ header nav {
     transition: margin 0.2s ease-in-out, width 0.2s ease-in-out, opacity 0.2s ease, padding 0.2s ease;
 }
 
-.stations-list {
+.city-list {
     width: calc(100% - 2 * var(--padding-mobile)); 
+}
+
+/*--- FOOTER ---*/
+
+footer {
+    padding: 0 var(--padding-mobile);
 }

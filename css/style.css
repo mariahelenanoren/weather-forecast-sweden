@@ -131,5 +131,14 @@ header a:hover {
 /*--- FOOTER ---*/
 
 footer {
+    width: 100%;
+    padding: 0 var(--padding-desktop);
     height: 4rem;
+    background-color: rgba(0, 0, 0, 0.35);
+}
+
+.footer-inner {
+    width: 100%;
+    color:rgb(182, 182, 182);
+    font-size: 0.8rem;
 }

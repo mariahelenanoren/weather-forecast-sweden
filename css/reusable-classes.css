@@ -42,6 +42,14 @@
     justify-content: space-around;
 }
 
+.justify-start {
+    justify-content: start;
+}
+
+.justify-end {
+    justify-content: end;
+}
+
 .align-center {
     align-items: center;
 }
