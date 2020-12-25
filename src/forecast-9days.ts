@@ -1,16 +1,25 @@
 /** Creates and presents 9 day forecast */
 function present9DayForecast(data: object | any) {
     const dayData = data.timeSeries
+    console.log(dayData)
     const container = document.querySelector(".weekly-forecast")
-    for (let d = 0; d < 10; d++) {
+    for (let d = 0; d < 9; d++) {
         let validYear: number | string = Number(year)
         let validMonth: number | string = Number(month)
         let validDate: number | string = Number(date) + 1 + d // +1 because forecast should start from day after today
         if (checkEndOfMonth(validMonth, validDate) === true) {
             validMonth += 1;
-            validDate = 1;
+            if (checkEndOfYear(validMonth) === true) {
+                validYear += 1;
+                validDate -= getDaysInMonth(year, validMonth)
+                if (validMonth === 13) {
+                    validMonth = 1;
+                }
+            }
         }
+        console.log(validYear)
         const validTime = validYear + "-" + formatSingleDigitValues(validMonth) + "-" + formatSingleDigitValues(validDate) + "T12:00:00Z"
+        console.log(validTime)
         for (let i = 0; i < dayData.length; i++) {
             if (dayData[i].validTime === validTime) {
                 const innerContainer = document.createElement("div")
@@ -44,6 +53,14 @@ function present9DayForecast(data: object | any) {
     }
 }
 
+function checkEndOfYear(month: number) {
+    let nextYear = false;
+    if (month >= 12) {
+        nextYear = true;
+    }
+    return nextYear;
+}
+
 /** Checks if it is the end of the month */
 function checkEndOfMonth(month: number, day: number): boolean {
     const daysInMonth = getDaysInMonth(year, month)
@@ -55,7 +72,7 @@ function checkEndOfMonth(month: number, day: number): boolean {
 }
 
 /** Gets the number of days in a month */
-function getDaysInMonth(month: number, year: number): number {
+function getDaysInMonth(year: number, month: number): number {
    return new Date(year, month, 0).getDate();
 }
 

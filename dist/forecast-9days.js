@@ -1,16 +1,25 @@
 /** Creates and presents 9 day forecast */
 function present9DayForecast(data) {
     var dayData = data.timeSeries;
+    console.log(dayData);
     var container = document.querySelector(".weekly-forecast");
-    for (var d = 0; d < 10; d++) {
+    for (var d = 0; d < 9; d++) {
         var validYear = Number(year);
         var validMonth = Number(month);
         var validDate = Number(date) + 1 + d; // +1 because forecast should start from day after today
         if (checkEndOfMonth(validMonth, validDate) === true) {
             validMonth += 1;
-            validDate = 1;
+            if (checkEndOfYear(validMonth) === true) {
+                validYear += 1;
+                validDate -= getDaysInMonth(year, validMonth);
+                if (validMonth === 13) {
+                    validMonth = 1;
+                }
+            }
         }
+        console.log(validYear);
         var validTime = validYear + "-" + formatSingleDigitValues(validMonth) + "-" + formatSingleDigitValues(validDate) + "T12:00:00Z";
+        console.log(validTime);
         for (var i = 0; i < dayData.length; i++) {
             if (dayData[i].validTime === validTime) {
                 var innerContainer = document.createElement("div");
@@ -39,6 +48,13 @@ function present9DayForecast(data) {
         }
     }
 }
+function checkEndOfYear(month) {
+    var nextYear = false;
+    if (month >= 12) {
+        nextYear = true;
+    }
+    return nextYear;
+}
 /** Checks if it is the end of the month */
 function checkEndOfMonth(month, day) {
     var daysInMonth = getDaysInMonth(year, month);
@@ -49,7 +65,7 @@ function checkEndOfMonth(month, day) {
     return nextMonth;
 }
 /** Gets the number of days in a month */
-function getDaysInMonth(month, year) {
+function getDaysInMonth(year, month) {
     return new Date(year, month, 0).getDate();
 }
 /** Gets the name of the weekday */
