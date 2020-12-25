@@ -1,7 +1,6 @@
 /** Creates and presents 9 day forecast */
 function present9DayForecast(data: object | any) {
     const dayData = data.timeSeries
-    console.log(dayData)
     const container = document.querySelector(".weekly-forecast")
     for (let d = 0; d < 9; d++) {
         let validYear: number | string = Number(year)
@@ -17,9 +16,7 @@ function present9DayForecast(data: object | any) {
                 }
             }
         }
-        console.log(validYear)
         const validTime = validYear + "-" + formatSingleDigitValues(validMonth) + "-" + formatSingleDigitValues(validDate) + "T12:00:00Z"
-        console.log(validTime)
         for (let i = 0; i < dayData.length; i++) {
             if (dayData[i].validTime === validTime) {
                 const innerContainer = document.createElement("div")

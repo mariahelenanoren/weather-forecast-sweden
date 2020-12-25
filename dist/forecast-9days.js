@@ -1,7 +1,6 @@
 /** Creates and presents 9 day forecast */
 function present9DayForecast(data) {
     var dayData = data.timeSeries;
-    console.log(dayData);
     var container = document.querySelector(".weekly-forecast");
     for (var d = 0; d < 9; d++) {
         var validYear = Number(year);
@@ -17,9 +16,7 @@ function present9DayForecast(data) {
                 }
             }
         }
-        console.log(validYear);
         var validTime = validYear + "-" + formatSingleDigitValues(validMonth) + "-" + formatSingleDigitValues(validDate) + "T12:00:00Z";
-        console.log(validTime);
         for (var i = 0; i < dayData.length; i++) {
             if (dayData[i].validTime === validTime) {
                 var innerContainer = document.createElement("div");
