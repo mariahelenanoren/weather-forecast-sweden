@@ -46,7 +46,7 @@ body {
 header {
     width: 100%;
     position: relative;
-    height: 4rem;
+    height: 5rem;
     width: 100%;
     padding: 0 var(--padding-desktop);
 }
