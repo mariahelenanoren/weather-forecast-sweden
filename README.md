@@ -1,7 +1,7 @@
 # Swedish weather forecast
 ## A weather forecast website for Swedens cities and towns 
 
-#### [Live demo](https://mariahelenanoren.github.io/weather-forecast-sweden/).
+#### [Live demo](https://mariahelenanoren.github.io/weather-forecast-sweden/)
 
 **List of Swedish citites with coordinates:**  
 All of the Swedish cities along with their respective coordinates are from [Niclas Kron's Svenska Städer `.csv` list](https://github.com/sphrak/svenska-stader/). 
